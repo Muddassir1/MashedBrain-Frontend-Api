@@ -1,0 +1,381 @@
+$color-green: #27AE60;
+$color-blue: #2F80ED;
+$color-red: #EB5757;
+$color-gray: #7A7A7A;
+$color-darker: #161924;
+$color-light-gray: #f3f3f3;
+$border-width: 1px;
+$books-table-border-width : 1px;
+$books-table-border-color: #E3E3E3;
+$button-custom-padding: 15px 35px;
+
+@mixin content($color-default, $color-main) {
+    background: $color-default;
+    color: $color-main;
+}
+
+.fal {
+    font-family: "Font Awesome 6 Pro";
+}
+
+.btn-custom-padding {
+    padding: $button-custom-padding;
+}
+
+.bg-gray-150 {
+    background-color: #F6F6F6;
+}
+
+.text-dark-gray {
+    color: #3C4548
+}
+
+.color-green {
+    color: $color-green
+}
+
+.color-blue {
+    color: $color-blue
+}
+
+.color-red {
+    color: $color-red
+}
+
+.color-gray {
+    color: $color-gray;
+}
+
+.text-darker {
+    color: $color-darker;
+}
+
+.btn-outline-blue {
+    color: #0070E0;
+    border-color: #D1E8FF;
+}
+
+.btn-outline-warning {
+    color: #FF9635;
+}
+
+.btn-cancel {
+    background: #E8E8E8;
+    color: #5A5B60;
+}
+
+.search-bar-top>* {
+    background-color: #F5F9FC;
+    padding: 15px 20px;
+}
+
+.name {
+    color: #1F1F1F;
+    font-size: 17px;
+}
+
+.email {
+    font-size: 14px;
+    color: #686868;
+}
+
+.page-title {
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: 0px;
+}
+
+.card-header {
+    h6 {
+        color: #161924;
+    }
+}
+
+.text-desc {
+    color: #919499;
+}
+
+.bell-nav {
+    background: #F5F9FC;
+}
+
+.numbers {
+    .heading-top {
+        color: #939094;
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+}
+
+.dataTables_filter {
+    display: none;
+}
+
+.graph-image {
+    position: absolute;
+    right: 20px;
+    bottom: 35px;
+}
+
+.graph-image img {
+    height: 45px;
+}
+
+input.daterange {
+    height: 50px;
+    padding-left: 45px;
+    border-radius: 5px;
+    background: #F5F5F5;
+    border: none;
+}
+
+.daterange-container {
+    position: relative;
+
+    i {
+        position: absolute;
+        top: 12px;
+        left: 10px;
+        font-size: 25px;
+    }
+}
+
+table th {
+    font-size: 18px;
+    color: $color-gray;
+    font-weight: 400 !important;
+}
+
+/* Books Page Styles */
+.table-books {
+
+    border-collapse: separate;
+    border-spacing: 0;
+
+    thead th,
+    tbody {
+        border: 0px !important;
+    }
+
+    td {
+        border: solid $books-table-border-width $books-table-border-color;
+        border-right: 0px;
+        border-style: none solid solid none;
+        padding: 10px;
+    }
+
+    tr td:first-child {
+        border-top-left-radius: 10px;
+        border-right: 0px;
+    }
+
+    tr td:last-child {
+        border-top-right-radius: 10px;
+        border-right: $books-table-border-width solid $books-table-border-color;
+        border-left: 0px;
+    }
+
+    tr td:first-child {
+        border-bottom-left-radius: 10px;
+    }
+
+    tr td:last-child {
+        border-bottom-right-radius: 10px;
+    }
+
+    tr td {
+        border-top-style: solid;
+    }
+
+    tr td:first-child {
+        border-left-style: solid;
+    }
+
+    tbody tr:last-child td {
+        border-width: $books-table-border-width;
+        border-right: 0px;
+    }
+
+    tbody tr:last-child td:last-child {
+        border-top-right-radius: 10px;
+        border-right: $books-table-border-width solid $books-table-border-color;
+        border-left: 0px;
+    }
+
+    tr.row-spacer {
+        height: 16px;
+    }
+
+    .selected-row td {
+        border-color: #806bf6 !important;
+        border-width: 2.5px;
+        border-right: 0px;
+    }
+
+    .selected-row td:last-child {
+        border-width: 2.5px;
+        border-left: 0px;
+    }
+}
+
+.book-image-thumb{
+    max-width:90px;
+}
+
+.btn-primary-light {
+    background: #F5F3FF;
+    color: #806BF6;
+    margin: 0px;
+    width: 110px;
+}
+
+.btn-danger-light {
+    background: #FFEBEB;
+    color: #EB5757;
+    margin: 0px;
+    width: 110px;
+}
+
+.btn-primary.btn-hover-outline:hover {
+    background: white;
+    color: $primary;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+.filter-box {
+    color: #605D62;
+    background: $color-light-gray;
+    padding: 5px 0px 5px 20px;
+    width: 160px;
+    font-size: 13px;
+    font-weight: 600;
+    position: relative;
+}
+
+
+.filter-box img {
+    margin-right: 10px;
+}
+
+.filter-box:after {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+/* Categories Page */
+
+.row-img img {
+    width: 70px;
+}
+
+/* User Proile */
+
+.add-form .form-control-label {
+    color: $color-gray;
+    font-size: 14px;
+    margin-bottom: 16px;
+}
+
+.add-form .form-control {
+    padding: 16px 20px;
+    border-radius: 12px;
+    border-color: rgba(196, 196, 196, 0.5);
+    color: #161924;
+}
+
+.add-form .form-group {
+    margin-bottom: 25px;
+}
+
+/* Add Book */
+
+.add-page {
+    text-align: center;
+    background: #F5F3FF;
+    border: 1px dashed #806BF6;
+    border-radius: 12px;
+    padding: 15px;
+    color: #806BF6;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+
+/* Moderation */
+
+.users-table {
+
+    border-collapse: separate;
+    border-spacing: revert !important;
+
+    thead th {
+        border: 0px !important;
+    }
+}
+
+/* User Management */
+
+a.paginate_button {
+    border: 1px solid #4a4a4a30;
+    margin-right: 10px;
+    font-size: 14px;
+    padding: 10px;
+    height: 45px;
+    width: 45px;
+    display: inline-block;
+    text-align: center;
+    color: #6e6e6e;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+div#users-table_paginate {
+    margin-bottom: 20px;
+    text-align: right;
+}
+
+span a.paginate_button.current {
+    background: $primary;
+    color: white;
+    border-color: $primary;
+}
+
+#users-table_previous {
+    margin-right: 20px;
+}
+
+#users-table_next {
+    margin-left: 20px;
+}
+
+#users-table_previous,
+#users-table_next {
+    width: auto;
+    padding: 10px 20px;
+}
+
+a.paginate_button:last-child {
+    margin-right: 0px;
+}
+
+/* Modal Styles */
+
+.btn-close {
+    background-size: 10px;
+    opacity: 1;
+}
+
+.modal-header{
+    border-bottom: 0px;
+}
+
+.modal-title {
+    color: black;
+    font-size: 18px;
+}
+
+.modal-form .form-control{
+    border-radius: 4px;
+}
