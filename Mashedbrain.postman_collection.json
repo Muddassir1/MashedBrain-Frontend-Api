@@ -1,0 +1,546 @@
+{
+	"info": {
+		"_postman_id": "e6626104-9409-4564-aa17-9a31fefa5577",
+		"name": "Mashedbrain",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8731459"
+	},
+	"item": [
+		{
+			"name": "Books",
+			"item": [
+				{
+					"name": "GET",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{api_url}}/books",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"books"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Single",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "127.0.0.01:8000/api/books/1",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"01"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"books",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "\n",
+									"value": "name",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "value",
+									"value": "jungle",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{api_url}}/books/search?value=successs",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"books",
+								"search"
+							],
+							"query": [
+								{
+									"key": "value",
+									"value": "successs"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Latest",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "127.0.0.01:8000/api/books/latest",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"01"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"books",
+								"latest"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "GET User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{auth_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{api_url}}/user",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Settings",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "127.0.0.01:8000/api/user/settings",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"01"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"user",
+								"settings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Categories",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"category\": [\r\n        \"3\",\r\n        \"2\",\r\n        \"5\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.01:8000/api/user/categories",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"01"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"user",
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Membership",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"membership_id\" : 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.01:8000/api/user/membership",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"01"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"user",
+								"membership"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Settings",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_id\": 1,\r\n    \"dark_mode\": 0,\r\n    \"notifications\": 1,\r\n    \"autoplay\": 0,\r\n    \"download_with_data\": 1,\r\n    \"delete_on_completion\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.01:8000/api/user/settings",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"01"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"user",
+								"settings"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Categories",
+			"item": [
+				{
+					"name": "GET",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{api_url}}/categories",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Memberships",
+			"item": [
+				{
+					"name": "GET",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{api_url}}/memberships",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"memberships"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"muddassir.sa@gmail.com\",\r\n    \"password\":\"admin@123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_url}}/login",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"muddassr\",\r\n    \"email\": \"muddassir.szsa@gmail.com\",\r\n    \"password\": \"admin@123\",\r\n    \"password_confirmation\" : \"admin@123\",\r\n    \"phone\" : \"+923356098656\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_url}}/register",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Phone Verification",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"phone\" : \"+923356098656\",\r\n    \"code\" : \"754147\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_url}}/phone-verify",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"phone-verify"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{auth_token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"var Header = require('postman-collection').Header;",
+					"pm.request.headers.add(new Header(\"Accept:application/json\"))",
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "api_url",
+			"value": "127.0.0.01:8000/api",
+			"type": "string"
+		},
+		{
+			"key": "auth_token",
+			"value": "5|EfCwS2oe0dtOtHKUqQd90pyzkP1WyuOGjak9uQDR",
+			"type": "string"
+		}
+	]
+}
