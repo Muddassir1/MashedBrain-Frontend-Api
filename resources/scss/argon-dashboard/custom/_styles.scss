@@ -4,6 +4,7 @@ $color-red: #EB5757;
 $color-gray: #7A7A7A;
 $color-darker: #161924;
 $color-light-gray: #f3f3f3;
+$color-dark-purple: #212158;
 $border-width: 1px;
 $books-table-border-width : 1px;
 $books-table-border-color: #E3E3E3;
@@ -13,10 +14,37 @@ $button-custom-padding: 15px 35px;
     background: $color-default;
     color: $color-main;
 }
+@font-face {
+    font-family: 'Product Sans';
+    font-weight: 400;
+    src: url('../fonts/product-sans/Product Sans Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Product Sans';
+    font-weight: 700;
+    src: url('../fonts/product-sans/Product Sans Bold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Roboto';
+    font-weight: normal;
+    src: url('../fonts/roboto/Roboto-Regular.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Roboto';
+    font-weight: 500;
+    src: url('../fonts/roboto/Roboto-Medium.ttf') format('truetype');
+}
+
+body, h1, h2, h3, h4, h5, h6{
+    font-family: 'Product Sans';
+}
 
 .fal {
     font-family: "Font Awesome 6 Pro";
 }
+
 
 .btn-custom-padding {
     padding: $button-custom-padding;
@@ -50,6 +78,10 @@ $button-custom-padding: 15px 35px;
     color: $color-darker;
 }
 
+.color-dark-purple{
+    color:$color-dark-purple;
+}
+
 .btn-outline-blue {
     color: #0070E0;
     border-color: #D1E8FF;
@@ -62,6 +94,10 @@ $button-custom-padding: 15px 35px;
 .btn-cancel {
     background: #E8E8E8;
     color: #5A5B60;
+}
+
+.navbar .nav-link{
+    font-size: 16px;
 }
 
 .search-bar-top>* {
@@ -218,8 +254,8 @@ table th {
     }
 }
 
-.book-image-thumb{
-    max-width:90px;
+.book-image-thumb {
+    max-width: 90px;
 }
 
 .btn-primary-light {
@@ -367,7 +403,7 @@ a.paginate_button:last-child {
     opacity: 1;
 }
 
-.modal-header{
+.modal-header {
     border-bottom: 0px;
 }
 
@@ -376,6 +412,6 @@ a.paginate_button:last-child {
     font-size: 18px;
 }
 
-.modal-form .form-control{
+.modal-form .form-control {
     border-radius: 4px;
 }

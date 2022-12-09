@@ -18,7 +18,7 @@
                             <div class="col-8">
                                 <div class="numbers">
                                     <p class="heading-top">Total Earnings</p>
-                                    <h3 class="font-weight-bolder text-dark">
+                                    <h3 class="font-weight-bolder color-dark-purple">
                                         ৳ {{ number_format($earnings) }}
                                     </h3>
                                     <p class="text-sm font-weight-bold mt-5">
@@ -53,7 +53,7 @@
                             <div class="col-8">
                                 <div class="numbers">
                                     <p class="heading-top">Total Install</p>
-                                    <h3 class="font-weight-bolder text-dark">
+                                    <h3 class="font-weight-bolder color-dark-purple">
                                         100K
                                     </h3>
                                     <p class="text-sm font-weight-bold mt-5">
@@ -80,7 +80,7 @@
                             <div class="col-8">
                                 <div class="numbers">
                                     <p class="heading-top">Active Subscription</p>
-                                    <h3 class="font-weight-bolder text-dark">
+                                    <h3 class="font-weight-bolder color-dark-purple">
                                         {{ number_format($subscriptions) }}
                                     </h3>
                                     <p class="text-sm font-weight-bold mt-5">
@@ -115,7 +115,7 @@
                             <div class="col-8">
                                 <div class="numbers">
                                     <p class="heading-top">Download Per Book</p>
-                                    <h3 class="font-weight-bolder text-dark">
+                                    <h3 class="font-weight-bolder color-dark-purple">
                                         456
                                     </h3>
                                     <p class="text-sm font-weight-bold mt-5">

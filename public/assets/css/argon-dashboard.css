@@ -19422,7 +19422,6 @@ hr.horizontal.gray-light {
   box-shadow: none;
 }
 .navbar-vertical .navbar-nav .nav-link.active {
-  font-weight: 600;
   box-shadow: 0 0 2rem 0 rgba(136, 152, 170, 0.15);
   border-radius: 0.5rem;
 }
@@ -22434,6 +22433,30 @@ pre[class*=language-] {
     overflow: auto !important;
   }
 }
+@font-face {
+  font-family: "Product Sans";
+  font-weight: 400;
+  src: url("../fonts/product-sans/Product Sans Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Product Sans";
+  font-weight: 700;
+  src: url("../fonts/product-sans/Product Sans Bold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Roboto";
+  font-weight: normal;
+  src: url("../fonts/roboto/Roboto-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Roboto";
+  font-weight: 500;
+  src: url("../fonts/roboto/Roboto-Medium.ttf") format("truetype");
+}
+body, h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+  font-family: "Product Sans";
+}
+
 .fal {
   font-family: "Font Awesome 6 Pro";
 }
@@ -22470,6 +22493,10 @@ pre[class*=language-] {
   color: #161924;
 }
 
+.color-dark-purple {
+  color: #212158;
+}
+
 .btn-outline-blue {
   color: #0070E0;
   border-color: #D1E8FF;
@@ -22482,6 +22509,10 @@ pre[class*=language-] {
 .btn-cancel {
   background: #E8E8E8;
   color: #5A5B60;
+}
+
+.navbar .nav-link {
+  font-size: 16px;
 }
 
 .search-bar-top > * {

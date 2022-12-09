@@ -1,3 +1,6 @@
+<?php
+$currentRoute = Route::currentRouteName();
+?>
 <aside class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 fixed-start" id="sidenav-main">
     <div class="sidenav-header mt-4 mb-5">
         <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
@@ -10,7 +13,7 @@
             <li class="nav-item">
                 <a class="nav-link {{ Route::currentRouteName() == 'home' ? 'active' : '' }}" href="{{ route('home') }}">
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <img class="" src="{{asset('img/dashboard.svg')}}" alt="sidebar_illustration">
+                        <img class="" src="{{asset('img/icons/nav/dashboard'. ($currentRoute == 'home' ? '-active' : '').'.png')}}" alt="dashboard">
                     </div>
                     <span class="nav-link-text ms-1">Dashboard</span>
                 </a>
@@ -18,7 +21,7 @@
             <li class="nav-item">
                 <a class="nav-link {{ Route::currentRouteName() == 'books' ? 'active' : '' }}" href="{{ route('books') }}">
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-single-02 text-dark text-sm opacity-10"></i>
+                        <img class="" src="{{asset('img/icons/nav/book'. ($currentRoute == 'books' ? '-active' : '').'.png')}}" alt="book">
                     </div>
                     <span class="nav-link-text ms-1">Books</span>
                 </a>
@@ -26,7 +29,7 @@
             <li class="nav-item">
                 <a class="nav-link {{ Route::currentRouteName() == 'categories' ? 'active' : '' }}" href="{{ route('categories') }}">
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-single-02 text-dark text-sm opacity-10"></i>
+                        <img class="" src="{{asset('img/icons/nav/category'. ($currentRoute == 'categories' ? '-active' : '').'.png')}}" alt="category">
                     </div>
                     <span class="nav-link-text ms-1">Categories</span>
                 </a>
@@ -34,7 +37,7 @@
             <li class="nav-item">
                 <a class="nav-link {{ str_contains(request()->url(), 'users') == true ? 'active' : '' }}" href="{{ route('users.index') }}">
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-bullet-list-67 text-dark text-sm opacity-10"></i>
+                        <img class="" src="{{asset('img/icons/nav/user'. (str_contains(request()->url(), 'users') == true ? '-active' : '').'.png')}}" alt="user">
                     </div>
                     <span class="nav-link-text ms-1">Users</span>
                 </a>
@@ -42,7 +45,7 @@
             <li class="nav-item">
                 <a class="nav-link {{ str_contains(request()->url(), 'moderation') == true ? 'active' : '' }}" href="{{ route('page', ['page' => 'moderation']) }}">
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
+                        <img class="" src="{{asset('img/icons/nav/moderation'. ($currentRoute == 'moderation' ? '-active' : '').'.png')}}" alt="moderation">
                     </div>
                     <span class="nav-link-text ms-1">Moderation</span>
                 </a>
