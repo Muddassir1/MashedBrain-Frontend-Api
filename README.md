@@ -14,6 +14,8 @@
 2. Run `composer install`
 
 3.  Run the following commands:
+	- `php artisan storage:link`
+
 	- `php artisan migrate --seed`
 
 	- `php artisan serve`
