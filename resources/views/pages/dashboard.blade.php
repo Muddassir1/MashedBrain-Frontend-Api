@@ -21,11 +21,11 @@
                                     <h3 class="font-weight-bolder color-dark-purple">
                                         ৳ {{ number_format($earnings) }}
                                     </h3>
-                                    <p class="text-sm font-weight-bold mt-5">
+                                    <p class="text-sm font-weight-medium font-roboto color-gray mt-5">
                                         @if ($percent_earnings > 0)
                                             <span class="text-primary">{{ (int) $percent_earnings }}%</span> than last week
                                         @else
-                                            <span class="text-red">{{ (int) $percent_earnings }}%</span> than last week
+                                            <span class="color-red">{{ (int) $percent_earnings }}%</span> than last week
                                         @endif
                                     </p>
                                 </div>
@@ -56,7 +56,7 @@
                                     <h3 class="font-weight-bolder color-dark-purple">
                                         100K
                                     </h3>
-                                    <p class="text-sm font-weight-bold mt-5">
+                                    <p class="text-sm font-weight-medium font-roboto color-gray mt-5">
                                         <span class="text-red">-13%</span> than last week
                                     </p>
                                 </div>
@@ -83,11 +83,11 @@
                                     <h3 class="font-weight-bolder color-dark-purple">
                                         {{ number_format($subscriptions) }}
                                     </h3>
-                                    <p class="text-sm font-weight-bold mt-5">
+                                    <p class="text-sm font-weight-medium font-roboto color-gray mt-5">
                                         @if ($percent_subscriptions > 0)
                                             <span class="text-primary">{{ (int) $percent_subscriptions }}%</span> than last week
                                         @else
-                                            <span class="text-red">{{ (int) $percent_subscriptions }}%</span> than last week
+                                            <span class="color-red">{{ (int) $percent_subscriptions }}%</span> than last week
                                         @endif
                                     </p>
                                 </div>
@@ -118,7 +118,7 @@
                                     <h3 class="font-weight-bolder color-dark-purple">
                                         456
                                     </h3>
-                                    <p class="text-sm font-weight-bold mt-5">
+                                    <p class="text-sm font-weight-medium font-roboto color-gray mt-5">
                                         <span class="text-red">-13%</span> than last week
                                     </p>
                                 </div>
@@ -144,7 +144,7 @@
                         <div class="row">
                             <div class="col-md-9">
                                 <h6 class="text-capitalize">Revenue</h6>
-                                <p class="text-sm mb-0 text-desc">
+                                <p class="mb-0 text-desc">
                                     A detailed text here about the graph
                                 </p>
                             </div>
@@ -171,7 +171,7 @@
                         <div class="row">
                             <div class="col-md-9">
                                 <h6 class="text-capitalize">Recent Users</h6>
-                                <p class="text-sm mb-0 text-desc">
+                                <p class="mb-0 text-desc">
                                     A detailed text here about the graph
                                 </p>
                             </div>
@@ -206,24 +206,24 @@
                                         <td class="px-0">
                                             <div class="d-flex py-1">
                                                 <div>
-                                                    <img src="{{ asset($user->avatar) }}" class="avatar me-3"
+                                                    <img src="{{ asset($user->avatar) }}" class="rounded-circle avatar me-3"
                                                         alt="image">
                                                 </div>
                                                 <div class="d-flex flex-column justify-content-center">
-                                                    <h6 class="mb-0 text-sm"><a
+                                                    <p class="mb-0 text-sm"><a class="text-darker"
                                                             href="{{ route('users.edit', $user->id) }}">{{ $user->name }}</a>
-                                                    </h6>
+                                                    </p>
                                                 </div>
                                             </div>
                                         </td>
                                         <td>
-                                            <p class="text-sm font-weight-bold mb-0">{{ $user->email }}</p>
+                                            <p class="text-sm text-darker mb-0">{{ $user->email }}</p>
                                         </td>
                                         <td class="align-middle text-sm">
-                                            <p class="text-sm font-weight-bold mb-0">{{ $user->phone }}</p>
+                                            <p class="text-sm text-darker mb-0">{{ $user->phone }}</p>
                                         </td>
                                         <td class="align-middle text-sm">
-                                            <p class="text-sm font-weight-bold mb-0">{{ $user->get_membership_name() }}
+                                            <p class="text-sm text-darker mb-0">{{ $user->get_membership_name() }}
                                             </p>
                                         </td>
                                         <td class="align-middle">

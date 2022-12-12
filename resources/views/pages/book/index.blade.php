@@ -57,7 +57,7 @@
                                 </div>
                             </td>
                             <td>
-                                <p class="text-sm mb-2 text-dark">{{$book->name}}</p>
+                                <p class="mb-3 text-darker">{{$book->name}}</p>
                                 <p>
 
                                     <a href="{{route('books.edit',[$book->id])}}" class="btn btn-primary-light me-2">Edit Book</a>
@@ -70,11 +70,11 @@
                                 </form>
                             </td>
                             <td class="align-middle text-center text-sm">
-                                <p class="text-sm text-dark mb-0">{{$book->author}}</p>
+                                <p class="text-sm text-darker mb-0">{{$book->author}}</p>
                             </td>
                             <td class="align-middle text-end">
                                 <div class="d-flex px-3 py-1 justify-content-center align-items-center">
-                                    <p class="text-sm text-dark mb-0">{{date('jS M, Y',strtotime($book->created_at))}}</p>
+                                    <p class="text-sm text-darker mb-0">{{date('jS M, Y',strtotime($book->created_at))}}</p>
                                 </div>
                             </td>
                         </tr>

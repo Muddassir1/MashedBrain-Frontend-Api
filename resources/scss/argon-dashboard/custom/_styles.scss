@@ -14,10 +14,17 @@ $button-custom-padding: 15px 35px;
     background: $color-default;
     color: $color-main;
 }
+
+@font-face {
+    font-family: 'Product Sans';
+    font-weight: normal;
+    src: url('../fonts/product-sans/Product Sans Regular.ttf') format('truetype');
+}
+
 @font-face {
     font-family: 'Product Sans';
     font-weight: 400;
-    src: url('../fonts/product-sans/Product Sans Regular.ttf') format('truetype');
+    src: url('../fonts/product-sans/Product Sans 400.ttf') format('truetype');
 }
 
 @font-face {
@@ -31,13 +38,20 @@ $button-custom-padding: 15px 35px;
     font-weight: normal;
     src: url('../fonts/roboto/Roboto-Regular.ttf') format('truetype');
 }
+
 @font-face {
     font-family: 'Roboto';
     font-weight: 500;
     src: url('../fonts/roboto/Roboto-Medium.ttf') format('truetype');
 }
 
-body, h1, h2, h3, h4, h5, h6{
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: 'Product Sans';
 }
 
@@ -45,6 +59,22 @@ body, h1, h2, h3, h4, h5, h6{
     font-family: "Font Awesome 6 Pro";
 }
 
+.font-roboto {
+    font-family: 'Roboto';
+}
+
+.font-weight-medium {
+    font-weight: 500;
+}
+
+.btn {
+    font-size: $font-size-xs;
+}
+
+.btn-outline-red {
+    color: #E72429;
+    border-color: #FFACAE;
+}
 
 .btn-custom-padding {
     padding: $button-custom-padding;
@@ -78,8 +108,8 @@ body, h1, h2, h3, h4, h5, h6{
     color: $color-darker;
 }
 
-.color-dark-purple{
-    color:$color-dark-purple;
+.color-dark-purple {
+    color: $color-dark-purple;
 }
 
 .btn-outline-blue {
@@ -96,7 +126,7 @@ body, h1, h2, h3, h4, h5, h6{
     color: #5A5B60;
 }
 
-.navbar .nav-link{
+.navbar .nav-link {
     font-size: 16px;
 }
 
@@ -124,11 +154,14 @@ body, h1, h2, h3, h4, h5, h6{
 .card-header {
     h6 {
         color: #161924;
+        font-weight: 400;
+        font-size: 24px;
     }
 }
 
 .text-desc {
     color: #919499;
+    font-size: 14px;
 }
 
 .bell-nav {
@@ -144,6 +177,10 @@ body, h1, h2, h3, h4, h5, h6{
 }
 
 .dataTables_filter {
+    display: none;
+}
+
+.dt-buttons{
     display: none;
 }
 
@@ -163,6 +200,8 @@ input.daterange {
     border-radius: 5px;
     background: #F5F5F5;
     border: none;
+    color: #605D62;
+    font-weight: 700;
 }
 
 .daterange-container {

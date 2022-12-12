@@ -50,7 +50,7 @@
   --bs-black-rgb: 0, 0, 0;
   --bs-body-color-rgb: 103, 116, 142;
   --bs-body-bg-rgb: 255, 255, 255;
-  --bs-font-sans-serif: "Open Sans", sans-serif;
+  --bs-font-sans-serif: "Product Sans", sans-serif;
   --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
   --bs-body-font-family: var(--bs-font-sans-serif);
@@ -17185,7 +17185,7 @@ textarea.form-control-lg {
   padding: 1.5rem;
 }
 .card .card-body {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Product Sans", sans-serif;
   padding: 1.5rem;
 }
 .card.card-plain {
@@ -20616,7 +20616,7 @@ p {
 }
 
 .text-sans-serif {
-  font-family: "Open Sans", sans-serif !important;
+  font-family: "Product Sans", sans-serif !important;
 }
 
 .text-monospace {
@@ -22435,8 +22435,13 @@ pre[class*=language-] {
 }
 @font-face {
   font-family: "Product Sans";
-  font-weight: 400;
+  font-weight: normal;
   src: url("../fonts/product-sans/Product Sans Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Product Sans";
+  font-weight: 400;
+  src: url("../fonts/product-sans/Product Sans 400.ttf") format("truetype");
 }
 @font-face {
   font-family: "Product Sans";
@@ -22453,12 +22458,41 @@ pre[class*=language-] {
   font-weight: 500;
   src: url("../fonts/roboto/Roboto-Medium.ttf") format("truetype");
 }
-body, h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+body,
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
   font-family: "Product Sans";
 }
 
 .fal {
   font-family: "Font Awesome 6 Pro";
+}
+
+.font-roboto {
+  font-family: "Roboto";
+}
+
+.font-weight-medium {
+  font-weight: 500;
+}
+
+.btn {
+  font-size: 0.75rem;
+}
+
+.btn-outline-red {
+  color: #E72429;
+  border-color: #FFACAE;
 }
 
 .btn-custom-padding {
@@ -22538,10 +22572,13 @@ body, h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 
 .card-header h6, .card-header .h6 {
   color: #161924;
+  font-weight: 400;
+  font-size: 24px;
 }
 
 .text-desc {
   color: #919499;
+  font-size: 14px;
 }
 
 .bell-nav {
@@ -22555,6 +22592,10 @@ body, h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 }
 
 .dataTables_filter {
+  display: none;
+}
+
+.dt-buttons {
   display: none;
 }
 
@@ -22574,6 +22615,8 @@ input.daterange {
   border-radius: 5px;
   background: #F5F5F5;
   border: none;
+  color: #605D62;
+  font-weight: 700;
 }
 
 .daterange-container {
