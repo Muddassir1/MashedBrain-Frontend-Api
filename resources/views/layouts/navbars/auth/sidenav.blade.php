@@ -19,7 +19,7 @@ $currentRoute = Route::currentRouteName();
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ Route::currentRouteName() == 'books' ? 'active' : '' }}" href="{{ route('books') }}">
+                <a class="nav-link {{ str_contains(request()->url(), 'books') == true ? 'active' : '' }}" href="{{ route('books') }}">
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <img class="" src="{{asset('img/icons/nav/book'. ($currentRoute == 'books' ? '-active' : '').'.png')}}" alt="book">
                     </div>

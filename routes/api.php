@@ -14,12 +14,12 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-
-
-
 Route::post('login', 'LoginController@login');
 Route::post('register', 'RegisterController@register');
 Route::post('phone-verify', 'RegisterController@verify');
+
+Route::post('payment/ipn', 'PaymentController@ipn');
+Route::post('payment/success', 'PaymentController@success');
 
 Route::middleware('auth:sanctum')->group(function () {
 
@@ -38,4 +38,5 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::resource('categories', 'CategoryController', ["as" => "api"]);
     Route::resource('memberships', 'MembershipController', ["as" => "api"])->only(['index']);
+
 });

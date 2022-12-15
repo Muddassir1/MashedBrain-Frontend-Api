@@ -10,7 +10,7 @@ class Book extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name','author','language','category','about_book','about_audience','about_author','time'];
+    protected $fillable = ['name','author','language','category','about_book','about_audience','about_author','time','recommended','popular'];
 
     public static function get_similar_books($book){
         $catId = $book->category;

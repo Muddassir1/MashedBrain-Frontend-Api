@@ -19,7 +19,9 @@ class BookController extends Controller
         $latest_books_count = 10;
         $books_by_categories = Category::get_books_by_categories();
         $latest_books = Book::orderBy('created_at', 'desc')->take($latest_books_count)->get();
-        return response()->json(compact('books_by_categories', 'latest_books'));
+        $recommended = Book::where("recommended",1)->get();
+        $popular = Book::where("popular",1)->get();
+        return response()->json(compact('books_by_categories', 'latest_books','recommended','popular'));
     }
 
     /**
