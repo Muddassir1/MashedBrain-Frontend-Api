@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\UserMemberships;
+use App\Models\UserSetting;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
