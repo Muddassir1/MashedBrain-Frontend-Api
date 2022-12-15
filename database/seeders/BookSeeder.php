@@ -71,6 +71,34 @@ class BookSeeder extends Seeder
                 'about_author' => $about_author,
                 'created_at' => $created,
                 'updated_at' => $updated
+            ],
+            [
+                'name' => $name,
+                'author' => $author,
+                'language' => 2,
+                'category' => 2,
+                'image_path' => '/img/books/3.png',
+                'about_book' => $about_book,
+                'about_audience' => $about_audience,
+                'about_author' => $about_author,
+                'recommended' => 1,
+                'popular' => 1,
+                'created_at' => $created,
+                'updated_at' => $updated
+            ],
+            [
+                'name' => $name,
+                'author' => $author,
+                'language' => 2,
+                'category' => 2,
+                'image_path' => '/img/books/1.png',
+                'about_book' => $about_book,
+                'about_audience' => $about_audience,
+                'about_author' => $about_author,
+                'recommended' => 1,
+                'popular' => 1,
+                'created_at' => $created,
+                'updated_at' => $updated
             ]
         ]);
     }
