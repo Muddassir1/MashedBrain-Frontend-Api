@@ -20,6 +20,8 @@ Route::post('phone-verify', 'RegisterController@verify');
 
 Route::post('payment/ipn', 'PaymentController@ipn');
 Route::post('payment/success', 'PaymentController@success');
+Route::post('payment/fail', 'PaymentController@fail');
+Route::post('payment/cancel', 'PaymentController@cancel');
 
 Route::middleware('auth:sanctum')->group(function () {
 
@@ -39,4 +41,5 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::resource('categories', 'CategoryController', ["as" => "api"]);
     Route::resource('memberships', 'MembershipController', ["as" => "api"])->only(['index']);
 
+    Route::post('payment/verify', 'PaymentController@verify');
 });

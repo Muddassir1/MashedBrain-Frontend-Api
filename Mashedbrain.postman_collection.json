@@ -299,7 +299,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"user_id\": 1,\r\n    \"dark_mode\": 0,\r\n    \"notifications\": 1,\r\n    \"autoplay\": 0,\r\n    \"download_with_data\": 1,\r\n    \"delete_on_completion\": 0\r\n}",
+							"raw": "{\r\n    \"dark_mode\": 0,\r\n    \"notifications\": 0,\r\n    \"autoplay\": 0,\r\n    \"download_with_data\": 1,\r\n    \"delete_on_completion\": 0\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -403,7 +403,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\":\"muddassir.sa@gmail.com\",\r\n    \"password\":\"admin@123\"\r\n}",
+							"raw": "{\r\n    \"email\":\"khalidfarhan@gmail.com\",\r\n    \"password\":\"admin@123\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -440,7 +440,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"muddassr\",\r\n    \"email\": \"muddassir.szsa@gmail.com\",\r\n    \"password\": \"admin@123\",\r\n    \"password_confirmation\" : \"admin@123\",\r\n    \"phone\" : \"+923356098656\"\r\n}",
+							"raw": "{\r\n    \"name\": \"umer\",\r\n    \"email\": \"muddassir.szzsza@gmail.com\",\r\n    \"password\": \"admin@123\",\r\n    \"password_confirmation\" : \"admin@123\",\r\n    \"phone\" : \"+923356098656\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -477,7 +477,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"phone\" : \"+923356098656\",\r\n    \"code\" : \"754147\"\r\n}",
+							"raw": "{\r\n    \"phone\" : \"+923356098656\",\r\n    \"code\" : \"532232\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -491,6 +491,250 @@
 							],
 							"path": [
 								"phone-verify"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Payment",
+			"item": [
+				{
+					"name": "Initiate",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "store_id",
+									"value": "mashe639066d33397e",
+									"type": "text"
+								},
+								{
+									"key": "store_passwd",
+									"value": "mashe639066d33397e@ssl",
+									"type": "text"
+								},
+								{
+									"key": "total_amount",
+									"value": "10.00",
+									"type": "text"
+								},
+								{
+									"key": "currency",
+									"value": "BDT",
+									"type": "text"
+								},
+								{
+									"key": "tran_id",
+									"value": "123456798",
+									"type": "text"
+								},
+								{
+									"key": "product_category",
+									"value": "course",
+									"type": "text"
+								},
+								{
+									"key": "success_url",
+									"value": "http://127.0.0.1:8000/api/payment/success",
+									"type": "text"
+								},
+								{
+									"key": "fail_url",
+									"value": "http://127.0.0.1:8000/api/payment/fail",
+									"type": "text"
+								},
+								{
+									"key": "cancel_url",
+									"value": "http://127.0.0.1:8000/api/payment/cancel",
+									"type": "text"
+								},
+								{
+									"key": "cus_name",
+									"value": "muddassir",
+									"type": "text"
+								},
+								{
+									"key": "cus_city",
+									"value": "Dhaka",
+									"type": "text"
+								},
+								{
+									"key": "cus_email",
+									"value": "test@mail.com",
+									"type": "text"
+								},
+								{
+									"key": "cus_add1",
+									"value": "Dhaka",
+									"type": "text"
+								},
+								{
+									"key": "cus_state",
+									"value": "rawalpindi",
+									"type": "text"
+								},
+								{
+									"key": "cus_postcode",
+									"value": "1000",
+									"type": "text"
+								},
+								{
+									"key": "cus_country",
+									"value": "Bangladesh",
+									"type": "text"
+								},
+								{
+									"key": "cus_phone",
+									"value": "01711111111",
+									"type": "text"
+								},
+								{
+									"key": "shipping_method",
+									"value": "No",
+									"type": "text"
+								},
+								{
+									"key": "product_name",
+									"value": "course",
+									"type": "text"
+								},
+								{
+									"key": "product_profile",
+									"value": "non-physical-goods",
+									"type": "text"
+								},
+								{
+									"key": "ship_name",
+									"value": "asd",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "ship_add1",
+									"value": "Dhaka",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "ship_city",
+									"value": "Dhaka",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "ship_state",
+									"value": "Dhaka",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "ship_country",
+									"value": "Bangladesh",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "ship_postcode",
+									"value": "4666",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "ipn_url",
+									"value": "http://127.0.0.1:8000/api/payment/ipn",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "ipn_url",
+									"value": "http://calculatorsarena.com/umer_admin/listener.php",
+									"type": "text"
+								},
+								{
+									"key": "value_a",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://sandbox.sslcommerz.com/gwprocess/v4/api.php",
+							"protocol": "https",
+							"host": [
+								"sandbox",
+								"sslcommerz",
+								"com"
+							],
+							"path": [
+								"gwprocess",
+								"v4",
+								"api.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "IPN",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "val_id",
+									"value": "221213124340lC2rJVHOwf7VEna",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "VALID",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{api_url}}/payment/ipn",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"payment",
+								"ipn"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Verify",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"transaction_id\" : \"1234567981\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_url}}/payment/verify",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"payment",
+								"verify"
 							]
 						}
 					},

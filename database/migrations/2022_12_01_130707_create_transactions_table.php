@@ -15,10 +15,14 @@ return new class extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
-            $table->foreignId('membership_id');
-            $table->foreignId('payment_method_id');
+            $table->foreignId('user_id')->nullable();
+            $table->text('transaction_id');
+            $table->text('bank_transaction_id');
+            $table->text('val_id');
             $table->integer('amount');
+            $table->foreignId('membership_id');
+            $table->string('payment_method');
+            $table->string('status');
             $table->timestamps();
         });
     }
