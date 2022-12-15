@@ -9,14 +9,14 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function settings()
+    public function settings(Request $request)
     {
-        return User::find(1)->settings;
+        return $request->user()->settings;
     }
 
     public function updateSettings(Request $request)
     {
-        $uid = $request->user_id;
+        $uid = $request->user()->id;
         $settings = UserSetting::updateOrCreate(
             ['user_id' => $uid],
             $request->all()
@@ -26,7 +26,7 @@ class UserController extends Controller
 
     public function updateCategories(Request $request)
     {
-        $uid = 1;
+        $uid = $request->user()->id;
         $categories = implode(",", $request->input('category'));
         UserCategories::updateOrCreate(
             ['user_id' => $uid],
@@ -39,7 +39,7 @@ class UserController extends Controller
 
     public function updateMembership(Request $request)
     {
-        $uid = 1;
+        $uid = $request->user()->id;
         UserMemberships::updateOrCreate(
             ['user_id' => $uid],
             $request->all()
