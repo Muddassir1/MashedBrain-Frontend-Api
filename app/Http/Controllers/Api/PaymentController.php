@@ -96,7 +96,14 @@ class PaymentController extends Controller
     public function fail()
     {
         return response()->json([
-            'message' => "The payment was cancelled or failed"
+            'message' => "The payment failed"
+        ], 400);
+    }
+
+    public function cancel()
+    {
+        return response()->json([
+            'message' => "The payment was cancelled"
         ], 400);
     }
 }
