@@ -25,14 +25,11 @@ Route::post('payment/cancel', 'PaymentController@cancel');
 
 Route::middleware('auth:sanctum')->group(function () {
 
-    Route::get('/user', function (Request $request) {
-        return $request->user();
-    });
-
     Route::get('books/search', 'BookController@search');
     Route::get('books/latest', 'BookController@latest');
     Route::resource('books', 'BookController', ["as" => "api"]);
 
+    Route::get('/user', 'UserController@index');
     Route::post('user/update', 'UserController@updateProfile');
     Route::post('user/reset-password', 'UserController@resetPassword');
     Route::get('user/settings', 'UserController@settings');

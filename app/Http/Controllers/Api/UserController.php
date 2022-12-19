@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\UserCategories;
 use App\Models\UserMemberships;
 use App\Models\UserSetting;
 use App\Notifications\NewUserRegistration;
@@ -15,6 +16,12 @@ use Illuminate\Support\Facades\Notification;
 class UserController extends Controller
 {
     use Notifiable;
+
+    public function index(Request $request)
+    {
+        $users = User::with('membership')->find(9);
+        return $request->user();
+    }
 
     public function updateProfile(Request $request)
     {

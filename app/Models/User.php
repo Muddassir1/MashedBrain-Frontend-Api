@@ -89,7 +89,7 @@ class User extends Authenticatable
 
     public function membership()
     {
-        return $this->belongsTo(UserMemberships::class);
+        return $this->belongsTo(UserMemberships::class,'id','user_id');
     }
 
     protected static function booted()
