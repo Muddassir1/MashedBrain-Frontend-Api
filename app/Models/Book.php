@@ -18,7 +18,7 @@ class Book extends Model
     }
 
     public static function get_book_pages($book){
-        return BookPages::where('book_id','=',$book->id)->get();
+        return BookPages::where('book_id',$book->id)->get();
     }
 
     public function category()

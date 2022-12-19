@@ -45,7 +45,7 @@ class BookController extends Controller
     {
         $book = Book::findOrFail($id);
         $pages = Book::get_book_pages($book);
-        return response()->json($pages);
+        return response()->json(compact('book','pages'));
     }
 
     /**
