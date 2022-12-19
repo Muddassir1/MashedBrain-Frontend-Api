@@ -19,8 +19,8 @@ class UserController extends Controller
 
     public function index(Request $request)
     {
-        $users = User::with('membership')->find(9);
-        return $request->user();
+        $user = User::with(['membership','categories'])->find($request->user()->id);
+        return $user;
     }
 
     public function updateProfile(Request $request)
