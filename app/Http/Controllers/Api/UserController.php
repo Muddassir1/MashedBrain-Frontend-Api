@@ -6,10 +6,54 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\UserMemberships;
 use App\Models\UserSetting;
+use App\Notifications\NewUserRegistration;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Notification;
 
 class UserController extends Controller
 {
+    use Notifiable;
+
+    public function updateProfile(Request $request)
+    {
+        $user = $request->user();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->about = $request->about;
+
+        if ($request->hasFile('avatar') && $request->file('avatar')->isValid()) {
+            $avatar_path = $request->file('avatar')->store('uploads/images/users', 'public');
+            $user->avatar = '/storage/' . $avatar_path;
+        }
+        $user->save();
+
+        return response()->json([
+            "message" => "Profile updated successfully"
+        ]);
+    }
+
+    public function resetPassword(Request $request)
+    {
+
+        $user = $request->user();
+
+        $request->validate([
+            'old_pass' => 'required',
+            'password' => 'required|min:5|max:255|confirmed|different:old_pass'
+        ]);
+
+        if (Hash::check($request->old_pass, $user->password)) {
+            $user->fill([
+                'password' => $request->password
+            ])->save();
+
+            return response()->json(["message" => "Password changed successfully!"]);
+        }
+        return response()->json(["message" => "Incorrect password"], 401);
+    }
+
     public function settings(Request $request)
     {
         return $request->user()->settings;

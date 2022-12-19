@@ -33,6 +33,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('books/latest', 'BookController@latest');
     Route::resource('books', 'BookController', ["as" => "api"]);
 
+    Route::post('user/update', 'UserController@updateProfile');
+    Route::post('user/reset-password', 'UserController@resetPassword');
     Route::get('user/settings', 'UserController@settings');
     Route::patch('user/settings', 'UserController@updateSettings');
     Route::post('user/categories', 'UserController@updateCategories');

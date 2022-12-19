@@ -22486,6 +22486,10 @@ h6,
   font-weight: 500;
 }
 
+.text-md {
+  font-size: 16px !important;
+}
+
 .btn {
   font-size: 0.75rem;
 }
@@ -22543,6 +22547,14 @@ h6,
 .btn-cancel {
   background: #E8E8E8;
   color: #5A5B60;
+}
+
+.user-dropdown .dropdown-item:hover *, .user-dropdown .dropdown-item:focus * {
+  color: #806BF6 !important;
+}
+
+.user-dropdown .dropdown-item:hover, .user-dropdown .dropdown-item:focus {
+  background: #F5F3FF;
 }
 
 .navbar .nav-link {
@@ -22624,8 +22636,8 @@ input.daterange {
 }
 .daterange-container i {
   position: absolute;
-  top: 12px;
-  left: 10px;
+  top: 9px;
+  left: 13px;
   font-size: 25px;
 }
 

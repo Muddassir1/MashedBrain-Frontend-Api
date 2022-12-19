@@ -150,7 +150,7 @@
                             </div>
                             <div class="col-md-3">
                                 <div class="daterange-container">
-                                    <i class="fal fa-calendar-alt"></i>
+                                    <i class="fal fa-calendar-alt px-1" style="font-size: 19px"></i>
                                     <input type="text" name="daterange" class="daterange form-control" />
                                 </div>
                             </div>
@@ -177,7 +177,7 @@
                             </div>
                             <div class="col-md-3">
                                 <div class="daterange-container">
-                                    <i class="fal fa-calendar-alt"></i>
+                                    <i class="fal fa-calendar-alt" style="font-size: 19px"></i>
                                     <input type="text" name="users_filter" class="daterange form-control" />
                                 </div>
                             </div>

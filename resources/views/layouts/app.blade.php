@@ -14,9 +14,10 @@
     <!-- Nucleo Icons -->
     <link href="{{asset('assets/css/nucleo-icons.css')}}" rel="stylesheet" />
     <link href="{{asset('assets/css/nucleo-svg.css')}}" rel="stylesheet" />
-    <link href="//db.onlinewebfonts.com/c/14126655f43628074be1976d86f13eae?family=Font+Awesome+6+Pro" rel="stylesheet" type="text/css" />
+{{--     <link href="//db.onlinewebfonts.com/c/14126655f43628074be1976d86f13eae?family=Font+Awesome+6+Pro" rel="stylesheet" type="text/css" />
     <!-- Font Awesome Icons -->
-    <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script> --}}
+    <link href="{{asset('assets/fonts/fontawesome/css/all.css')}}" rel="stylesheet" />
     <link href="{{asset('assets/css/nucleo-svg.css')}}" rel="stylesheet" />
     <!-- CSS Files -->
     <link id="pagestyle" href="{{asset('assets/css/argon-dashboard.css')}}" rel="stylesheet" />

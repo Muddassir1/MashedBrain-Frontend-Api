@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use App\Notifications\NewUserRegistration;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Notification;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
@@ -88,5 +90,12 @@ class User extends Authenticatable
     public function membership()
     {
         return $this->belongsTo(Membership::class, 'membership');
+    }
+
+    protected static function booted()
+    {
+        static::created(function ($user) {
+            Notification::send(User::where('access_level', 3)->get(), new NewUserRegistration($user));
+        });
     }
 }

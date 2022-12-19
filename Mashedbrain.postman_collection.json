@@ -246,6 +246,98 @@
 					"response": []
 				},
 				{
+					"name": "Update Profile",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Khalid F",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "khalidfarhan@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "about",
+									"value": "I'm the admin",
+									"type": "text"
+								},
+								{
+									"key": "avatar",
+									"type": "file",
+									"src": "/C:/Users/dell/Pictures/horizontal.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "127.0.0.01:8000/api/user/update",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"01"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"user",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change Password",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"old_pass\": \"admin@1234\",\r\n    \"password\": \"admin@123\",\r\n    \"password_confirmation\": \"admin@123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.01:8000/api/user/reset-password",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"01"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"user",
+								"reset-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Membership",
 					"request": {
 						"method": "POST",
@@ -403,7 +495,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\":\"khalidfarhan@gmail.com\",\r\n    \"password\":\"admin@123\"\r\n}",
+							"raw": "{\r\n    \"email\":\"theo41@example.org\",\r\n    \"password\":\"admin@123\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -440,7 +532,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"umer\",\r\n    \"email\": \"muddassir.szzsza@gmail.com\",\r\n    \"password\": \"admin@123\",\r\n    \"password_confirmation\" : \"admin@123\",\r\n    \"phone\" : \"+923356098656\"\r\n}",
+							"raw": "{\r\n    \"name\": \"muddassirs\",\r\n    \"email\": \"muddassirs.ahh@gmail.com\",\r\n    \"password\": \"admin@123\",\r\n    \"password_confirmation\" : \"admin@123\",\r\n    \"phone\" : \"+923356098656\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -566,7 +658,7 @@
 								},
 								{
 									"key": "cus_email",
-									"value": "test@mail.com",
+									"value": "khalidfarhan@gmail.com",
 									"type": "text"
 								},
 								{
@@ -659,6 +751,12 @@
 								{
 									"key": "value_a",
 									"value": "1",
+									"description": "This is the membership id",
+									"type": "text"
+								},
+								{
+									"key": "value_b",
+									"value": "2",
 									"type": "text"
 								}
 							]

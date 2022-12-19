@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Transaction;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
@@ -50,14 +51,16 @@ class PaymentController extends Controller
             ]);
             $data = json_decode($response->body());
             if ($data->status == 'VALID' || $data->status == 'VALIDATED') {
+
                 Transaction::create([
+                    'user_id'               => $data->value_b,
                     'transaction_id'        => $data->tran_id,
                     'bank_transaction_id'   => $data->bank_tran_id,
                     'val_id'                => $data->val_id,
                     'amount'                => $data->amount,
                     'membership_id'         => $data->value_a,
                     'payment_method'        => $data->card_type,
-                    'status'                => $data->status,
+                    'status'                => $data->status
                 ]);
 
                 return response()->json([
@@ -75,10 +78,10 @@ class PaymentController extends Controller
         $transaction_id = $request->transaction_id;
         $transaction = Transaction::where('transaction_id', $transaction_id)->firstOrFail();
 
-        if ($transaction->user_id == NULL) {
+        /* if ($transaction->user_id == NULL) {
             $transaction->user_id = $request->user()->id;
             $transaction->save();
-        }
+        } */
 
         if ($transaction->status == 'VALID' || $transaction->status == 'VALIDATED') {
             return response()->json([

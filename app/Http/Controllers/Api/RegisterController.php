@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Notifications\NewUserRegistration;
 use Error;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Notification;
 use Throwable;
 use Twilio\Rest\Client;
 use Illuminate\Support\Facades\Validator;
@@ -36,10 +38,11 @@ class RegisterController extends Controller
         $twilio = new Client($this->sid, $this->token);
 
         try {
-             $twilio->verify->v2->services($this->vsid)
+            $twilio->verify->v2->services($this->vsid)
                 ->verifications
                 ->create($request->phone, "sms");
             $user = User::create($request->all());
+
             return response()->json($user);
         } catch (Throwable $th) {
             return response()->json(["message" => $th->getMessage()], 500);

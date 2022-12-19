@@ -16,9 +16,12 @@ class NewUserRegistration extends Notification
      *
      * @return void
      */
-    public function __construct()
+    
+     protected $username;
+
+    public function __construct($user)
     {
-        //
+        $this->username = $user->username;
     }
 
     /**
@@ -27,6 +30,7 @@ class NewUserRegistration extends Notification
      * @param  mixed  $notifiable
      * @return array
      */
+
     public function via($notifiable)
     {
         return ['database'];
@@ -55,7 +59,8 @@ class NewUserRegistration extends Notification
     public function toArray($notifiable)
     {
         return [
-            //
+            "username" => $this->username,
+            "message" => "$this->username has just signed up"
         ];
     }
 }
