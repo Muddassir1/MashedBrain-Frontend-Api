@@ -21,6 +21,7 @@ return new class extends Migration
             $table->bigInteger("access_level")->unsigned()->after('about')->default(1);
             $table->foreign("access_level")->references("id")->on("access_level");
             $table->text("avatar")->after('about')->nullable();
+            $table->boolean("phone_verified")->after('membership')->default(0);
         });
     }
 

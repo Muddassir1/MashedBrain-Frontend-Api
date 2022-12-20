@@ -44,14 +44,14 @@ class UserSeeder extends Seeder
                 [
                     "username" => 'sohankhan',
                     "name" => "Sohan Khan",
-                    "access_level" => 2,
+                    "access_level" => 3,
                     "avatar" => $admin_avatar,
                     "password" => "admin@123"
                 ],
                 [
                     "username" => 'mirzafor',
                     "name" => "Mir Zafor",
-                    "access_level" => 2 ,
+                    "access_level" => 3 ,
                     "avatar" => $admin_avatar,
                     "password" => "admin@123"
                 ],

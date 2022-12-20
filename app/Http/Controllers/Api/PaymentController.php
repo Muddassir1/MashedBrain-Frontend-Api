@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Transaction;
 use App\Models\User;
+use App\Models\UserMemberships;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
@@ -62,6 +63,11 @@ class PaymentController extends Controller
                     'payment_method'        => $data->card_type,
                     'status'                => $data->status
                 ]);
+
+                UserMemberships::updateOrCreate(
+                    ['user_id' => $data->value_b],
+                    ["membership_id" => $data->value_a]
+                );
 
                 return response()->json([
                     'message' => 'Transaction successfully created'

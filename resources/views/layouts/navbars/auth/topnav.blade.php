@@ -16,14 +16,19 @@
                 </div>
             </div>
             <ul class="navbar-nav  justify-content-end">
-                <li class="nav-item dropdown pe-2 d-flex align-items-center">
+                <li class="nav-item dropdown pe-2 d-flex align-items-center" id="notificationDropdown">
                     <a href="javascript:;" class="nav-link text-white bell-nav p-3 rounded-circle"
                         id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                         <img src="{{ asset('/img/icons/misc/bell.png') }}" />
                     </a>
-                    <ul class="dropdown-menu dropdown-menu-end px-2 py-3 me-sm-n4"
-                        aria-labelledby="dropdownMenuButton">
-
+                    <ul class="dropdown-menu dropdown-menu-end px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
+                        @if (count($notifications) == 0)
+                        <li>
+                            <a class="dropdown-item border-radius-md" href="javascript:;">
+                                <p class="m-0">No unread notifications</p>
+                            </a>
+                        </li>
+                        @endif
                         @foreach ($notifications as $notification)
                             <li class="mb-2">
                                 <a class="dropdown-item border-radius-md" href="javascript:;">
@@ -43,7 +48,7 @@
                                             </p>
                                             <p class="text-xs text-secondary mb-0">
                                                 <i class="fa fa-clock me-1"></i>
-                                                13 minutes ago
+                                                {{$notification->created_at->diffForHumans()}}
                                             </p>
                                         </div>
                                     </div>
@@ -63,7 +68,8 @@
                     <ul class="dropdown-menu w-100 mt-0 px-3 py-3 me-sm-n4 user-dropdown text-md"
                         aria-labelledby="dropdownMenuButton">
                         <li>
-                            <a class="dropdown-item border-radius-md" href="{{ route('users.edit',Auth::user()->id) }}">
+                            <a class="dropdown-item border-radius-md"
+                                href="{{ route('users.edit', Auth::user()->id) }}">
                                 <div class="d-flex py-1">
                                     <div class="my-auto me-3">
                                         <i class="fa fa-user"></i>
@@ -204,3 +210,23 @@
     </div>
 </nav>
 <!-- End Navbar -->
+
+
+@push('js')
+    <script src="{{ asset('assets/js/jquery-3.6.1.min.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            $("#notificationDropdown").on('show.bs.dropdown', function() {
+                $.ajax({
+                    url: "{{ route('read-notifs') }}",
+                    success: (data) => {
+
+                    },
+                    error: (data) => {
+                        console.log(data);
+                    }
+                })
+            });
+        })
+    </script>
+@endpush

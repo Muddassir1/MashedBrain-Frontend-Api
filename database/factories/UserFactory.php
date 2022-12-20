@@ -29,7 +29,6 @@ class UserFactory extends Factory
             "membership" => rand(1,2),
             "status" => rand(0,1),
             "access_level" => 1,
-            "category" => rand(1,3),
             "avatar" => "/img/defaults/avatar/".rand(1,4).".jpg",
             "created_at" => Carbon::now()->subMonths(rand(1,11))
         ];

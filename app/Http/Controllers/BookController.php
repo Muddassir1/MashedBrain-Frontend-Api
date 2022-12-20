@@ -19,11 +19,12 @@ class BookController extends Controller
     {
         $books = Book::all();
         $categories = Category::all();
-        return view('pages.book.index', ["books" => $books,"categories" => $categories]);
+        return view('pages.book.index', ["books" => $books, "categories" => $categories]);
     }
 
-    public function filter(Request $request){
-        $books = Book::where('category',$request->id)->get();
+    public function filter(Request $request)
+    {
+        $books = Book::where('category', $request->id)->get();
         return $books->toJson();
     }
 
@@ -31,17 +32,19 @@ class BookController extends Controller
 
     public function publish(Request $request)
     {
-        for ($i = 0; $i < count($request->input('title')); $i++) {
-            if (isset($request->input('id')[$i])) {
-                $id = $request->input('id')[$i];
-                $page = BookPages::find($id);
-            } else {
-                $page = new BookPages();
+        if (count($request->input('title')) > 0 && $request->input('title.0') != "") {
+            for ($i = 0; $i < count($request->input('title')); $i++) {
+                if (isset($request->input('id')[$i])) {
+                    $id = $request->input('id')[$i];
+                    $page = BookPages::find($id);
+                } else {
+                    $page = new BookPages();
+                }
+                $page->book_id = $request->input('book_id');
+                $page->title = $request->input('title')[$i];
+                $page->description = $request->input('description')[$i];
+                $page->save();
             }
-            $page->book_id = $request->input('book_id');
-            $page->title = $request->input('title')[$i];
-            $page->description = $request->input('description')[$i];
-            $page->save();
         }
 
         return redirect('books')->with('succes', 'Book updated');
@@ -81,7 +84,7 @@ class BookController extends Controller
             $book->audio_path = '/storage/' . $audio_path;
         }
         $book->save();
-        return view('pages.book.publish-book', ["id" => $book->id]);
+        return view('pages.book.publish-book', ["id" => $book->id, "pages" => array()]);
     }
 
     /**

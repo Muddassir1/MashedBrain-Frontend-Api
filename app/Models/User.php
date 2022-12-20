@@ -32,7 +32,8 @@ class User extends Authenticatable
         'about',
         'category',
         'access_level',
-        'avatar'
+        'avatar',
+        'phone_verified'
     ];
 
     /**
@@ -95,12 +96,5 @@ class User extends Authenticatable
     public function categories()
     {
         return $this->belongsTo(UserCategories::class, 'id', 'user_id');
-    }
-
-    protected static function booted()
-    {
-        static::created(function ($user) {
-            Notification::send(User::where('access_level', 3)->get(), new NewUserRegistration($user));
-        });
     }
 }

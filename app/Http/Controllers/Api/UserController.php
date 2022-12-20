@@ -7,11 +7,9 @@ use App\Models\User;
 use App\Models\UserCategories;
 use App\Models\UserMemberships;
 use App\Models\UserSetting;
-use App\Notifications\NewUserRegistration;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Facades\Notification;
 
 class UserController extends Controller
 {

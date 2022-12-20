@@ -27,6 +27,8 @@ return new class extends Migration
             $table->longtext('about_book')->nullable();
             $table->longtext('about_audience')->nullable();
             $table->longtext('about_author')->nullable();
+            $table->string('time')->nullable();
+            $table->integer('views')->default(0);
             $table->timestamps();
         });
     }

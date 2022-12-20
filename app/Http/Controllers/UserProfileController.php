@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\UserCategories;
 use App\Models\UserSetting;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 
@@ -62,7 +63,6 @@ class UserProfileController extends Controller
         $user = User::find($id);
         $user->delete();
         return back()->with('succes', 'User deleted!');
-        //return redirect('/users')->with('succes', 'User deleted!');
     }
 
     public function moderation()
@@ -108,5 +108,9 @@ class UserProfileController extends Controller
         }
         $user->save();
         return back();
+    }
+
+    public function markNotificationAsRead(){
+        return Auth::user()->unreadNotifications->markAsRead();
     }
 }

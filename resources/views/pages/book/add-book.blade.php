@@ -81,6 +81,12 @@
                                             </select>
                                         </div>
                                     </div>
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label class="form-control-label">Read Time</label>
+                                            <input name="time" placeholder="10 minutes" class="form-control"/>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-md-5">

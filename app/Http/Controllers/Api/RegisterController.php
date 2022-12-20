@@ -5,13 +5,10 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Notifications\NewUserRegistration;
-use Error;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Notification;
 use Throwable;
 use Twilio\Rest\Client;
-use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {
@@ -43,6 +40,8 @@ class RegisterController extends Controller
                 ->create($request->phone, "sms");
             $user = User::create($request->all());
 
+            Notification::send(User::where('access_level', 3)->get(), new NewUserRegistration($user));
+
             return response()->json($user);
         } catch (Throwable $th) {
             return response()->json(["message" => $th->getMessage()], 500);
@@ -65,6 +64,7 @@ class RegisterController extends Controller
                         "code" => $code
                     ]
                 );
+            User::where('phone', $phone)->update(['phone_verified' => 1]);
         } catch (Throwable $th) {
             return response()->json(
                 [

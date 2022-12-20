@@ -19,9 +19,9 @@ class BookController extends Controller
         $latest_books_count = 10;
         $books_by_categories = Category::get_books_by_categories();
         $latest_books = Book::orderBy('created_at', 'desc')->take($latest_books_count)->get();
-        $recommended = Book::where("recommended",1)->get();
-        $popular = Book::where("popular",1)->get();
-        return response()->json(compact('books_by_categories', 'latest_books','recommended','popular'));
+        $recommended = Book::where("recommended", 1)->get();
+        $popular = Book::where("popular", 1)->get();
+        return response()->json(compact('books_by_categories', 'latest_books', 'recommended', 'popular'));
     }
 
     /**
@@ -45,7 +45,7 @@ class BookController extends Controller
     {
         $book = Book::findOrFail($id);
         $pages = Book::get_book_pages($book);
-        return response()->json(compact('book','pages'));
+        return response()->json(compact('book', 'pages'));
     }
 
     /**
@@ -82,7 +82,15 @@ class BookController extends Controller
         // return Book::with('category')->join('categories','books.category','=','categories.id')->where('books.name','like',$value)->orWhere('author','like',$value)->orWhere('categories.name','like',$value)->get(['books.*']);
 
         return Book::with('category')->where('books.name', 'like', $value)->orWhere('author', 'like', $value)->orWhereHas('category', function ($query) use ($value) {
-            $query->where('name', 'like' ,$value);
+            $query->where('name', 'like', $value);
         })->get(['books.*']);
+    }
+
+    public function markViewed($id)
+    {
+        $book = Book::find($id);
+        $book->views = $book->views + 1;
+        $book->save();
+        return $book;
     }
 }

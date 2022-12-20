@@ -41,18 +41,18 @@ Route::get('/dashboard', [HomeController::class, 'index'])->name('home')->middle
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('/virtual-reality', [PageController::class, 'vr'])->name('virtual-reality');
 	Route::get('/rtl', [PageController::class, 'rtl'])->name('rtl');
-	/* Route::get('/books', [BooksController::class, 'show'])->name('books');
-	Route::get('/add-book', [BooksController::class, 'add'])->name('add-book');
-	 */
+	
+	Route::get('/notify-read', [UserProfileController::class, 'markNotificationAsRead'])->name('read-notifs');
 	Route::resource('users',UserProfileController::class);
 	Route::post('/users/{id}',[UserProfileController::class,'setUserStatus'])->name('users.status');
+	Route::get('/moderation', [UserProfileController::class, 'moderation'])->name('moderation');
+
 	Route::post('books/publish',[BookController::class,'publish'])->name('books.publish');
 	Route::get('books/filter',[BookController::class,'filter'])->name('books.filter');
 	Route::resource('/books',BookController::class)->name('index','books');
+	
 	Route::resource('/categories',CategoryController::class)->name('index','categories');
-/* 	Route::get('/profile', [UserProfileController::class, 'show'])->name('profile');
-	Route::post('/profile', [UserProfileController::class, 'update'])->name('profile.update'); */
-	Route::get('/moderation', [UserProfileController::class, 'moderation'])->name('moderation');
+
 	Route::get('/profile-static', [PageController::class, 'profile'])->name('profile-static'); 
 	Route::get('/sign-in-static', [PageController::class, 'signin'])->name('sign-in-static');
 	Route::get('/sign-up-static', [PageController::class, 'signup'])->name('sign-up-static'); 

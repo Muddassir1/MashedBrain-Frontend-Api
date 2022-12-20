@@ -30,7 +30,7 @@
                 @csrf
                 <input type="hidden" name="book_id" value="{{ $id }}" />
                 @php($i = 1)
-                @if (isset($pages))
+                @if (count($pages) > 0)
                     @foreach ($pages as $page)
                         <input type="hidden" name="id[]" value="{{ $page->id }}" />
                         <div class="card form-template mb-3">
