@@ -9,6 +9,8 @@ class Membership extends Model
 {
     use HasFactory;
 
+    protected $hidden = ['id'];
+
     public function users()
     {
         return $this->hasMany(User::class, 'membership');

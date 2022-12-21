@@ -9,10 +9,15 @@ class UserMemberships extends Model
 {
     use HasFactory;
 
+    protected $hidden = ['created_at','updated_at','id','user_id'];
     protected $guarded = [];
 
     public function user()
     {
-        $this->hasMany(User::class, 'user_id');
+        return $this->hasMany(User::class, 'user_id');
+    }
+
+    public function details(){
+        return $this->belongsTo(Membership::class,'membership_id','id');
     }
 }

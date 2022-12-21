@@ -26,7 +26,6 @@ class UserFactory extends Factory
             'email_verified_at' => now(),
             'password' => fake()->password(), // password
             "phone" => fake()->e164PhoneNumber(),
-            "membership" => rand(1,2),
             "status" => rand(0,1),
             "access_level" => 1,
             "avatar" => "/img/defaults/avatar/".rand(1,4).".jpg",
