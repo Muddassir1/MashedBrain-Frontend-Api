@@ -25,7 +25,7 @@
     @stack('css')
 </head>
 
-<body class="{{ $class ?? '' }}">
+<body class="g-sidenav-show">
 
     @guest
     @yield('content')

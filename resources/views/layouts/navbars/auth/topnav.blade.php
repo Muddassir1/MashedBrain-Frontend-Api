@@ -1,12 +1,12 @@
 <!-- Navbar -->
 <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl
         {{ str_contains(Request::url(), 'virtual-reality') == true ? ' mt-3 mx-3 bg-primary' : '' }}"
-    id="navbarBlur" data-scroll="false">
+    id="" data-scroll="false">
     <div class="container-fluid py-1 px-3">
         <h5 class="text-white me-sm-5 mb-0"><span class="color-gray">Welcome,</span> <span
                 class="text-primary font-weight-bolder">{{ auth()->user()->name }}</span></h5>
-        <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4 justify-content-sm-end" id="navbar">
-            <div class="pe-md-3 d-flex align-items-center w-md-50">
+        <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4 justify-content-sm-end flex-column flex-sm-row" id="navbar">
+            <div class="pe-md-3 d-flex align-items-center w-md-50 w-100 mb-3 mb-sm-0">
                 <div class="input-group search-bar-top">
                     <span
                         class="input-group-text text-body border-radius-top-start-pill border-radius-bottom-start-pill"><i
@@ -15,7 +15,7 @@
                         placeholder="Search Here">
                 </div>
             </div>
-            <ul class="navbar-nav  justify-content-end">
+            <ul class="navbar-nav justify-content-sm-end">
                 <li class="nav-item dropdown pe-2 d-flex align-items-center" id="notificationDropdown">
                     <a href="javascript:;" class="nav-link text-white bell-nav p-3 rounded-circle"
                         id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
@@ -117,12 +117,12 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
-                    <a href="javascript:;" class="nav-link text-white p-0" id="iconNavbarSidenav">
+                <li class="nav-item d-xl-none ps-3 d-flex align-items-center flex-fill justify-content-end">
+                    <a href="javascript:;" class="nav-link p-0" id="iconNavbarSidenav">
                         <div class="sidenav-toggler-inner">
-                            <i class="sidenav-toggler-line bg-white"></i>
-                            <i class="sidenav-toggler-line bg-white"></i>
-                            <i class="sidenav-toggler-line bg-white"></i>
+                            <i class="sidenav-toggler-line bg-gray"></i>
+                            <i class="sidenav-toggler-line bg-gray"></i>
+                            <i class="sidenav-toggler-line bg-gray"></i>
                         </div>
                     </a>
                 </li>

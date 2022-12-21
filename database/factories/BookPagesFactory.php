@@ -18,8 +18,8 @@ class BookPagesFactory extends Factory
     {
         return [
             "book_id" => 1,
-            "title" => fake()->realText(10),
-            "description" => fake()->realText(100)
+            "title" => fake()->realText(15),
+            "description" => fake()->realText(1000)
         ];
     }
 }

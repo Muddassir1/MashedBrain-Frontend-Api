@@ -8,10 +8,10 @@
 <div class="row mt-4 mx-4">
     <div class="col-12">
         <div class="card-header pb-0 row align-items-center mb-4">
-            <div class="col-4">
+            <div class="col-md-4 col-6">
                 <h6 class="page-title">Books<span class="data-count text-primary ms-2">(34)</span></h6>
             </div>
-            <div class="col-4">
+            <div class="col-md-4 col-6">
                 <div class="filter-dropdown dropdown">
                     <div class="filter-box dropdown-toggle cursor-pointer" id="filterdropdown" data-bs-toggle="dropdown" aria-expanded="false">
                         <img src="./img/icons/misc/filter.png" />
@@ -24,14 +24,14 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-4 col-4 text-md-end">
+            <div class="col-md-4 col-12 text-md-end mt-2 mt-md-0">
                 <a href="{{ route('books.create') }}" class="btn btn-primary btn-hover-outline font-weight-normal mb-0 border-primary border">
                     <i class="fas fa-plus me-2"></i>Add New Book
                 </a>
             </div>
         </div>
         <div class="card-body px-0 pt-0 pb-2">
-            <div class="table-responsive p-0">
+            <div class="p-0">
                 <table class="table table-books align-items-center mb-0">
                     <thead>
                         <tr>
