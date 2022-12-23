@@ -70,7 +70,7 @@ class User extends Authenticatable
 
     public function get_membership_name()
     {
-        return Membership::find($this->membership)->name;
+        return $this->membership->details->name;
     }
 
     public function get_access_level_name()

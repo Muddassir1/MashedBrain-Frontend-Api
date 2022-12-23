@@ -6,9 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Models\Transaction;
 use App\Models\User;
 use App\Models\UserMemberships;
+use App\Notifications\TransactionNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Notification;
 
 class PaymentController extends Controller
 {
@@ -68,6 +70,8 @@ class PaymentController extends Controller
                     ['user_id' => $data->value_b],
                     ["membership_id" => $data->value_a]
                 );
+
+                Notification::send(User::where('access_level', 3)->get(), new TransactionNotification($transaction));
 
                 return response()->json([
                     'message' => 'Transaction successfully created'

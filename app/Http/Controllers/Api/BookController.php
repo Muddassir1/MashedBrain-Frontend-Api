@@ -3,9 +3,13 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Mail\BookMail;
 use App\Models\Book;
 use App\Models\Category;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Mail\Mailables\Attachment;
+use Illuminate\Support\Facades\Mail;
 
 class BookController extends Controller
 {
@@ -92,5 +96,20 @@ class BookController extends Controller
         $book->views = $book->views + 1;
         $book->save();
         return $book;
+    }
+
+    public function mailBook(Request $request)
+    {
+        /* $book = Book::findOrFail($request->id);
+        $pages = Book::get_book_pages($book); */
+        /*  return [
+            Attachment::fromData(fn () => "asd", 'Report.pdf')
+                    ->withMime('application/pdf'),
+        ]; */
+
+        // Mail::to('muddassir.ah@gmail.com')->send(new BookMail(),); 
+        $book = Book::all()->with('pages');
+        return $book;
+        return (new BookMail())->render();
     }
 }

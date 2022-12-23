@@ -27,7 +27,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::with('membership.details')->get();
         $recent_users = $users->sortByDesc('id')->take(30);
         $newbie = $users->where('membership', '=', '1');
         $nerds = $users->where('membership', '=', '2');

@@ -13,10 +13,4 @@ class Transaction extends Model
 
     protected $guarded = ['id'];
 
-    protected static function booted()
-    {
-        static::created(function ($transaction) {
-            Notification::send(User::where('access_level', 3)->get(), new TransactionNotification($transaction));
-        });
-    }
 }

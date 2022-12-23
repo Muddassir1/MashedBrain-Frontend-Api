@@ -28,6 +28,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('books/search', 'BookController@search');
     Route::get('books/latest', 'BookController@latest');
     Route::get('books/mark-view/{id}', 'BookController@markViewed');
+    Route::post('books/mail','BookController@mailBook');
     Route::resource('books', 'BookController', ["as" => "api"]);
 
     Route::get('/user', 'UserController@index');

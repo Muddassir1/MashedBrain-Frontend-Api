@@ -19,7 +19,7 @@ class UserMembershipsFactory extends Factory
     {
         return [
             "membership_id" => rand(1,2),
-            "user_id" => fake()->unique()->numberBetween(1,50),
+            "user_id" => fake()->unique()->numberBetween(1,User::count()),
             "status" => 1,
             "created_at" => fake()->dateTimeBetween('-2 week')
         ];

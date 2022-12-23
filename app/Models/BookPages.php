@@ -11,4 +11,9 @@ class BookPages extends Model
 
     public $timestamps = false;
     protected $guarded = ['id'];
+    protected $hidden = ['id'];
+
+    public function books(){
+        return $this->hasMany(Book::class,'id','book_id');
+    }
 }
