@@ -31,6 +31,6 @@ class Book extends Model
 
     public function pages()
     {
-        return $this->belongsTo(BookPages::class,'id','book_id');
+        return $this->hasMany(BookPages::class,'book_id','id');
     }
 }

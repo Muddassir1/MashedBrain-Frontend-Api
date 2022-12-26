@@ -20,12 +20,11 @@ class BookMail extends Mailable
      * @return void
      */
 
-    public $book;
-    public $pages;
-    
-    public function __construct()
+    public $data;
+
+    public function __construct($data)
     {
-        //
+        $this->data = $data;
     }
 
     /**
@@ -36,8 +35,8 @@ class BookMail extends Mailable
     public function envelope()
     {
         return new Envelope(
-            from: new Address('wizard@noorsofttech.com','MashedBrain'),
-            subject: 'Book Mail',
+            from: new Address('wizard@noorsofttech.com', 'MashedBrain'),
+            subject: 'Book Request: ' . $this->data->name,
         );
     }
 
@@ -49,7 +48,7 @@ class BookMail extends Mailable
     public function content()
     {
         return new Content(
-            text: 'email.book',
+            markdown: 'email.book',
         );
     }
 

@@ -13,7 +13,8 @@ class BookPages extends Model
     protected $guarded = ['id'];
     protected $hidden = ['id'];
 
-    public function books(){
-        return $this->hasMany(Book::class,'id','book_id');
+    public function books()
+    {
+        return $this->belongsTo(Book::class, 'book_id', 'id');
     }
 }

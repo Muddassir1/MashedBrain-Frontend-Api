@@ -113,7 +113,7 @@
 				{
 					"name": "Latest",
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
@@ -121,19 +121,122 @@
 								"type": "text"
 							}
 						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"offset\": 1,\r\n    \"count\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "127.0.0.01:8000/api/books/latest",
+							"raw": "{{api_url}}/books/latest",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"01"
+								"{{api_url}}"
 							],
-							"port": "8000",
 							"path": [
-								"api",
 								"books",
 								"latest"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Recommended",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"offset\": 0,\r\n    \"count\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_url}}/books/recommended",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"books",
+								"recommended"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Popular",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"offset\": 0,\r\n    \"count\": 10\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_url}}/books/popular",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"books",
+								"popular"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Filter by Category",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cat_id\": 2,\r\n    \"offset\": 0,\r\n    \"count\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_url}}/books/category",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"books",
+								"category"
 							]
 						}
 					},
@@ -164,6 +267,44 @@
 								"books",
 								"mark-view",
 								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Email Book",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.01:8000/api/books/mail",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"01"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"books",
+								"mail"
 							]
 						}
 					},
@@ -535,7 +676,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\":\"khalidfarhan@gmail.com\",\r\n    \"password\":\"admin@123\"\r\n}",
+							"raw": "{\r\n    \"email\":\"muddassir.ah@gmail.com\",\r\n    \"password\":\"admin@123\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"

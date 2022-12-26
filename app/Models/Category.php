@@ -12,9 +12,11 @@ class Category extends Model
 
     public $timestamps = false;
 
-    public static function get_books_by_categories()
+    public static function get_books_by_categories($book_count)
     {
-        return Category::with('books')->get()->groupBy('name');
+        return Category::with(['books' => function ($query) use ($book_count) {
+            $query->take($book_count);
+        }])->get()->groupBy('name');
     }
 
     public function books()

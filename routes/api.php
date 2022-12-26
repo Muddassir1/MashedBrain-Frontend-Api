@@ -26,7 +26,10 @@ Route::post('payment/cancel', 'PaymentController@cancel');
 Route::middleware('auth:sanctum')->group(function () {
 
     Route::get('books/search', 'BookController@search');
-    Route::get('books/latest', 'BookController@latest');
+    Route::post('books/latest', 'BookController@latest');
+    Route::post('books/recommended', 'BookController@recommended');
+    Route::post('books/popular', 'BookController@popular');
+    Route::post('books/category', 'BookController@filterCategory');
     Route::get('books/mark-view/{id}', 'BookController@markViewed');
     Route::post('books/mail','BookController@mailBook');
     Route::resource('books', 'BookController', ["as" => "api"]);

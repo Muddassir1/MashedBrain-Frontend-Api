@@ -20,11 +20,11 @@ class BookController extends Controller
      */
     public function index()
     {
-        $latest_books_count = 10;
-        $books_by_categories = Category::get_books_by_categories();
-        $latest_books = Book::orderBy('created_at', 'desc')->take($latest_books_count)->get();
-        $recommended = Book::where("recommended", 1)->get();
-        $popular = Book::where("popular", 1)->get();
+        $book_count = 5;
+        $books_by_categories = Category::get_books_by_categories($book_count);
+        $latest_books = Book::orderBy('created_at', 'desc')->take($book_count)->get();
+        $recommended = Book::where("recommended", 1)->take($book_count)->get();
+        $popular = Book::where("popular", 1)->take($book_count)->get();
         return response()->json(compact('books_by_categories', 'latest_books', 'recommended', 'popular'));
     }
 
@@ -45,6 +45,7 @@ class BookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function show($id)
     {
         $book = Book::findOrFail($id);
@@ -52,32 +53,36 @@ class BookController extends Controller
         return response()->json(compact('book', 'pages'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+
+    public function latest(Request $request)
     {
-        //
+        $offset = $request->offset;
+        $count = $request->count;
+        return Book::orderBy('created_at', 'desc')->skip($offset)->take($count)->get();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    public function recommended(Request $request)
     {
-        //
+        $offset = $request->offset;
+        $count = $request->count;
+        return Book::where("recommended", 1)->skip($offset)->take($count)->get();
     }
 
-    public function latest()
+    public function popular(Request $request)
     {
-        return Book::orderBy('created_at', 'desc')->get();
+        $offset = $request->offset;
+        $count = $request->count;
+        return Book::where("popular", 1)->skip($offset)->take($count)->get();
+    }
+
+    public function filterCategory(Request $request)
+    {
+        $offset = $request->offset;
+        $count = $request->count;
+        $cat_id = $request->cat_id;
+        return Category::with(['books' => function ($query) use ($count,$offset) {
+            $query->skip($offset)->take($count);
+        }])->where('id', $cat_id)->get();
     }
 
     public function search(Request $request)
@@ -100,16 +105,8 @@ class BookController extends Controller
 
     public function mailBook(Request $request)
     {
-        /* $book = Book::findOrFail($request->id);
-        $pages = Book::get_book_pages($book); */
-        /*  return [
-            Attachment::fromData(fn () => "asd", 'Report.pdf')
-                    ->withMime('application/pdf'),
-        ]; */
-
-        // Mail::to('muddassir.ah@gmail.com')->send(new BookMail(),); 
-        $book = Book::all()->with('pages');
-        return $book;
-        return (new BookMail())->render();
+        $book = Book::with('pages')->find($request->id);
+        Mail::to($request->user()->email)->send(new BookMail($book));
+        return response()->json(["message" => "Email sent successfully"]);
     }
 }
