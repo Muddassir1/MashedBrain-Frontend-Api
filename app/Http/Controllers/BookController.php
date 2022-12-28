@@ -92,7 +92,7 @@ class BookController extends Controller
         $app_users = UserNotificationTokens::all();
         $notifiables = array();
         foreach ($app_users as $app_user) {
-            $notifiables[] = "ExponentPushToken[".$app_user["token"]."]";
+            $notifiables[] = $app_user["token"];
         }
 
         Http::post("https://exp.host/--/api/v2/push/send", [
