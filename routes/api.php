@@ -41,6 +41,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::patch('user/settings', 'UserController@updateSettings');
     Route::post('user/categories', 'UserController@updateCategories');
     Route::post('user/membership', 'UserController@updateMembership');
+    Route::post('user/notification-token', 'UserController@saveNotificationToken');
 
     Route::resource('categories', 'CategoryController', ["as" => "api"]);
     Route::resource('memberships', 'MembershipController', ["as" => "api"])->only(['index']);

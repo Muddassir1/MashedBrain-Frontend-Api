@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\UserCategories;
 use App\Models\UserMemberships;
+use App\Models\UserNotificationTokens;
 use App\Models\UserSetting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -28,6 +29,7 @@ class UserController extends Controller
         $user->email = $request->email;
         $user->about = $request->about;
 
+        //dd($request->allFiles());
         if ($request->hasFile('avatar') && $request->file('avatar')->isValid()) {
             $avatar_path = $request->file('avatar')->store('uploads/images/users', 'public');
             $user->avatar = '/storage/' . $avatar_path;
@@ -97,5 +99,12 @@ class UserController extends Controller
         return response()->json([
             "message" => "Record saved successfully"
         ]);
+    }
+
+    public function saveNotificationToken(Request $request){
+        UserNotificationTokens::updateOrCreate(
+            ['user_id' => $request->user()->id],
+            ['token' => $request->token]
+        );
     }
 }

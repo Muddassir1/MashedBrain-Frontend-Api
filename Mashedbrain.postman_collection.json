@@ -547,6 +547,85 @@
 					"response": []
 				},
 				{
+					"name": "Notification Token Save",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"token\" : \"nh_1IrO4sveOhXZS5Jklrh\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.01:8000/api/user/notification-token",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"01"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"user",
+								"notification-token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Send Notification",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"to\" : \"ExponentPushToken[nh_1IrO4sveOhXZS5Jklrh]\",\r\n    \"title\":\"Test\",\r\n    \"body\":\"Thi is a test\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://exp.host/--/api/v2/push/send",
+							"protocol": "https",
+							"host": [
+								"exp",
+								"host"
+							],
+							"path": [
+								"--",
+								"api",
+								"v2",
+								"push",
+								"send"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Update Settings",
 					"protocolProfileBehavior": {
 						"disabledSystemHeaders": {}
@@ -676,7 +755,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\":\"muddassir.ah@gmail.com\",\r\n    \"password\":\"admin@123\"\r\n}",
+							"raw": "{\r\n    \"email\":\"khalidfarhan@gmail.com\",\r\n    \"password\":\"admin@123\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"

@@ -6,7 +6,9 @@ use App\Models\Book;
 use App\Models\BookPages;
 use App\Models\Category;
 use App\Models\Language;
+use App\Models\UserNotificationTokens;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class BookController extends Controller
 {
@@ -84,6 +86,21 @@ class BookController extends Controller
             $book->audio_path = '/storage/' . $audio_path;
         }
         $book->save();
+
+        // Send Push notification to users
+
+        $app_users = UserNotificationTokens::all();
+        $notifiables = array();
+        foreach ($app_users as $app_user) {
+            $notifiables[] = "ExponentPushToken[".$app_user["token"]."]";
+        }
+
+        Http::post("https://exp.host/--/api/v2/push/send", [
+            "to" => $notifiables,
+            "title" => "New book published!",
+            "body" => "$book->name by $book->author"
+        ]);
+
         return view('pages.book.publish-book', ["id" => $book->id, "pages" => array()]);
     }
 

@@ -10,6 +10,7 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Mail\Mailables\Attachment;
 use Illuminate\Support\Facades\Mail;
+use wapmorgan\Mp3Info\Mp3Info;
 
 class BookController extends Controller
 {
@@ -49,6 +50,9 @@ class BookController extends Controller
     public function show($id)
     {
         $book = Book::findOrFail($id);
+       // dd($this->getFileDuration(public_path() . $book->audio_path));
+        $audio = new Mp3Info(public_path() . $book->audio_path, true);
+        $book->audio_size = $audio->duration;
         $pages = Book::get_book_pages($book);
         return response()->json(compact('book', 'pages'));
     }
@@ -80,7 +84,7 @@ class BookController extends Controller
         $offset = $request->offset;
         $count = $request->count;
         $cat_id = $request->cat_id;
-        return Category::with(['books' => function ($query) use ($count,$offset) {
+        return Category::with(['books' => function ($query) use ($count, $offset) {
             $query->skip($offset)->take($count);
         }])->where('id', $cat_id)->get();
     }
@@ -109,4 +113,33 @@ class BookController extends Controller
         Mail::to($request->user()->email)->send(new BookMail($book));
         return response()->json(["message" => "Email sent successfully"]);
     }
+
+    public function getFileDuration($file)
+    {
+        if (file_exists($file)) {
+            ## open and read video file
+            $handle = fopen($file, "r");
+
+            ## read video file size
+            $contents = fread($handle, filesize($file));
+            fclose($handle);
+            $make_hexa = hexdec(bin2hex(substr($contents, strlen($contents) - 3)));
+            if (strlen($contents) > $make_hexa) {
+                $pre_duration = hexdec(bin2hex(substr($contents, strlen($contents) - $make_hexa, 3)));
+                $post_duration = $pre_duration / 1000;
+                $timehours = $post_duration / 3600;
+                $timeminutes = ($post_duration % 3600) / 60;
+                $timeseconds = ($post_duration % 3600) % 60;
+                $timehours = explode(".", $timehours);
+                $timeminutes = explode(".", $timeminutes);
+                $timeseconds = explode(".", $timeseconds);
+                $duration = $timehours[0] . ":" . $timeminutes[0] . ":" . $timeseconds[0];
+            }
+            return $duration;
+        } else {
+            return false;
+        }
+    }
+
+   
 }
