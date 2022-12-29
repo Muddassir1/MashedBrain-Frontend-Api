@@ -19,6 +19,7 @@ class RegisterController extends Controller
         $this->token = getenv("TWILIO_AUTH_TOKEN");
         $this->vsid = getenv("TWILIO_VERIFICATION_SID");
     }
+
     public function register(Request $request)
     {
 

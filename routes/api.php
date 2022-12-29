@@ -24,6 +24,7 @@ Route::post('payment/fail', 'PaymentController@fail');
 Route::post('payment/cancel', 'PaymentController@cancel');
 
 Route::post('user/reset-password-request', 'UserController@resetPasswordRequest');
+Route::post('user/reset-password-request-verify', 'UserController@resetPasswordRequestVerify');
 
 Route::middleware('auth:sanctum')->group(function () {
 

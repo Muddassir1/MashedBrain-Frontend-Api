@@ -8,14 +8,24 @@ use App\Models\UserCategories;
 use App\Models\UserMemberships;
 use App\Models\UserNotificationTokens;
 use App\Models\UserSetting;
-use App\Notifications\ForgotPassword;
+use Twilio\Rest\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
+use Throwable;
 
 class UserController extends Controller
 {
     use Notifiable;
+
+
+    public function __construct()
+    {
+        $this->sid = getenv("TWILIO_ACCOUNT_SID");
+        $this->token = getenv("TWILIO_AUTH_TOKEN");
+        $this->vsid = getenv("TWILIO_VERIFICATION_SID");
+    }
 
     public function index(Request $request)
     {
@@ -62,23 +72,57 @@ class UserController extends Controller
         return response()->json(["message" => "Incorrect password"], 401);
     }
 
-
-    public function routeNotificationForMail()
+    public function resetPasswordRequestVerify(Request $request)
     {
-        return request()->email;
+        $phone = $request->phone;
+        $code = $request->code;
+
+        $twilio = new Client($this->sid, $this->token);
+        try {
+            $verification_check = $twilio->verify->v2->services($this->vsid)
+                ->verificationChecks
+                ->create(
+                    [
+                        "to" => $phone,
+                        "code" => $code
+                    ]
+                );
+        } catch (Throwable $th) {
+            return response()->json(
+                [
+                    "message" => "Record not found",
+                    "status" => "failed"
+                ],
+                $th->getStatusCode()
+            );
+        }
+        return response()->json(["status" => $verification_check->status]);
     }
 
     public function resetPasswordRequest(Request $request)
     {
-        $email = $request->validate([
-            'email' => ['required']
+        $phone = $request->validate([
+            'phone' => ['required']
         ]);
 
-        $user = User::where('email', $email)->firstOrFail();
+        $user = User::where('phone', $phone)->firstOrFail();
 
         if ($user) {
-            $this->notify(new ForgotPassword($user->id));
-            return response()->json(["message" => 'A confirmation code was sent to your email address']);
+            //Send message
+            $twilio = new Client($this->sid, $this->token);
+
+            try {
+                $twilio->verify->v2->services($this->vsid)
+                    ->verifications
+                    ->create($request->phone, "sms");
+                Auth::loginUsingId($user->id);
+                return response()->json([
+                    "message" => "Code sent to the provided number",
+                    "token" => $user->createToken($user->name)->plainTextToken
+                ]);
+            } catch (Throwable $th) {
+                return response()->json(["message" => $th->getMessage()], 500);
+            }
         }
     }
 

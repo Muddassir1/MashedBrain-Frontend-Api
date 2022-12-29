@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "e6626104-9409-4564-aa17-9a31fefa5577",
+		"_postman_id": "ad24b32b-d031-42d0-9912-82d8eade839b",
 		"name": "Mashedbrain",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "8731459"
+		"_exporter_id": "11024730"
 	},
 	"item": [
 		{
@@ -509,6 +509,72 @@
 					"response": []
 				},
 				{
+					"name": "Reset Password Request",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"phone\" : \"+923356098656\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_url}}/user/reset-password-request",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"user",
+								"reset-password-request"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reset Password Request Verify",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"phone\" : \"+923356098656\",\r\n    \"code\" : \"7807\" // Check if status is \"approved\" in response\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_url}}/user/reset-password-request-verify",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"user",
+								"reset-password-request-verify"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Membership",
 					"request": {
 						"method": "POST",
@@ -559,7 +625,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"token\" : \"nh_1IrO4sveOhXZS5Jklrh\"\r\n}",
+							"raw": "{\r\n    \"token\" : \"ExponentPushToken[asd]\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
