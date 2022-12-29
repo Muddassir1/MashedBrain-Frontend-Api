@@ -10,7 +10,12 @@ class UserNotificationTokens extends Model
     use HasFactory;
 
     protected $table = "user_notif_tokens";
-    public $primaryKey = null;
+    public $primaryKey = 'user_id';
     public $timestamps = false;
-    protected $fillable = ['user_id','token'];
+    protected $fillable = ['user_id', 'token'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
 }

@@ -23,6 +23,8 @@ Route::post('payment/success', 'PaymentController@success');
 Route::post('payment/fail', 'PaymentController@fail');
 Route::post('payment/cancel', 'PaymentController@cancel');
 
+Route::post('user/reset-password-request', 'UserController@resetPasswordRequest');
+
 Route::middleware('auth:sanctum')->group(function () {
 
     Route::get('books/search', 'BookController@search');
@@ -31,7 +33,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('books/popular', 'BookController@popular');
     Route::post('books/category', 'BookController@filterCategory');
     Route::get('books/mark-view/{id}', 'BookController@markViewed');
-    Route::post('books/mail','BookController@mailBook');
+    Route::post('books/mail', 'BookController@mailBook');
     Route::resource('books', 'BookController', ["as" => "api"]);
 
     Route::get('/user', 'UserController@index');

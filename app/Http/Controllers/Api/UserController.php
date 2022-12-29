@@ -8,6 +8,7 @@ use App\Models\UserCategories;
 use App\Models\UserMemberships;
 use App\Models\UserNotificationTokens;
 use App\Models\UserSetting;
+use App\Notifications\ForgotPassword;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Notifications\Notifiable;
@@ -18,7 +19,7 @@ class UserController extends Controller
 
     public function index(Request $request)
     {
-        $user = User::with(['membership.details','categories'])->find($request->user()->id);
+        $user = User::with(['membership.details', 'categories'])->find($request->user()->id);
         return $user;
     }
 
@@ -61,6 +62,26 @@ class UserController extends Controller
         return response()->json(["message" => "Incorrect password"], 401);
     }
 
+
+    public function routeNotificationForMail()
+    {
+        return request()->email;
+    }
+
+    public function resetPasswordRequest(Request $request)
+    {
+        $email = $request->validate([
+            'email' => ['required']
+        ]);
+
+        $user = User::where('email', $email)->firstOrFail();
+
+        if ($user) {
+            $this->notify(new ForgotPassword($user->id));
+            return response()->json(["message" => 'A confirmation code was sent to your email address']);
+        }
+    }
+
     public function settings(Request $request)
     {
         return $request->user()->settings;
@@ -101,7 +122,8 @@ class UserController extends Controller
         ]);
     }
 
-    public function saveNotificationToken(Request $request){
+    public function saveNotificationToken(Request $request)
+    {
         UserNotificationTokens::updateOrCreate(
             ['user_id' => $request->user()->id],
             ['token' => $request->token]

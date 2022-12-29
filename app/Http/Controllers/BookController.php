@@ -89,10 +89,11 @@ class BookController extends Controller
 
         // Send Push notification to users
 
-        $app_users = UserNotificationTokens::all();
+        $app_users = UserNotificationTokens::with('user.settings')->get();
         $notifiables = array();
         foreach ($app_users as $app_user) {
-            $notifiables[] = $app_user["token"];
+            if ($app_user->user->settings->notifications)
+                $notifiables[] = $app_user["token"];
         }
 
         Http::post("https://exp.host/--/api/v2/push/send", [
