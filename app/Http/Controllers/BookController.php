@@ -9,6 +9,7 @@ use App\Models\Language;
 use App\Models\UserNotificationTokens;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use wapmorgan\Mp3Info\Mp3Info;
 
 class BookController extends Controller
 {
@@ -84,11 +85,15 @@ class BookController extends Controller
         if ($request->hasFile('book_audio') && $request->file('book_audio')->isValid()) {
             $audio_path = $request->file('book_audio')->store('uploads/audio', 'public');
             $book->audio_path = '/storage/' . $audio_path;
+            $audio = new Mp3Info(public_path() . $book->audio_path, true);
+            $book->audio_size = $audio->duration;
         }
         $book->save();
 
         // Send Push notification to users
 
+        $app_users = UserNotificationTokens::all();
+        $notifiables = array();
         $app_users = UserNotificationTokens::with('user.settings')->get();
         $notifiables = array();
         foreach ($app_users as $app_user) {
@@ -98,8 +103,7 @@ class BookController extends Controller
 
         Http::post("https://exp.host/--/api/v2/push/send", [
             "to" => $notifiables,
-            "title" => "New book published!",
-            "body" => "$book->name by $book->author"
+
         ]);
 
         return view('pages.book.publish-book', ["id" => $book->id, "pages" => array()]);
@@ -152,6 +156,8 @@ class BookController extends Controller
         if ($request->hasFile('book_audio') && $request->file('book_audio')->isValid()) {
             $audio_path = $request->file('book_audio')->store('uploads/audio', 'public');
             $book->audio_path = '/storage/' . $audio_path;
+            $audio = new Mp3Info(public_path() . $book->audio_path, true);
+            $book->audio_size = $audio->duration;
         }
         $book->fill($request->input());
         $book->save();

@@ -24,6 +24,7 @@ return new class extends Migration
             $table->foreign('language')->references('id')->on('languages');
             $table->text('image_path')->nullable();
             $table->text('audio_path')->nullable();
+            $table->integer('audio_size')->default(0);
             $table->longtext('about_book')->nullable();
             $table->longtext('about_audience')->nullable();
             $table->longtext('about_author')->nullable();

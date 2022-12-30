@@ -10,7 +10,6 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Mail\Mailables\Attachment;
 use Illuminate\Support\Facades\Mail;
-use wapmorgan\Mp3Info\Mp3Info;
 
 class BookController extends Controller
 {
@@ -51,8 +50,7 @@ class BookController extends Controller
     {
         $book = Book::findOrFail($id);
        // dd($this->getFileDuration(public_path() . $book->audio_path));
-        $audio = new Mp3Info(public_path() . $book->audio_path, true);
-        $book->audio_size = $audio->duration;
+        
         $pages = Book::get_book_pages($book);
         return response()->json(compact('book', 'pages'));
     }
