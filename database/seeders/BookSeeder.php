@@ -25,6 +25,8 @@ class BookSeeder extends Seeder
         $created = $updated = Carbon::now();
         $audio = new Mp3Info(public_path() . '/audio/example_audio.mp3', true);
         $audio_size = $audio->duration;
+        $audio = new Mp3Info(public_path() . '/audio/example_audio2.mp3', true);
+        $audio_size2 = $audio->duration;
 
         DB::table('books')->insert([
             [
@@ -47,13 +49,13 @@ class BookSeeder extends Seeder
                 'language' => 1,
                 'category' => 1,
                 'image_path' => '/img/books/2.png',
-                'audio_path' => '/audio/example_audio.mp3',
+                'audio_path' => '/audio/example_audio2.mp3',
                 'about_book' => $about_book,
                 'about_audience' => $about_audience,
                 'about_author' => $about_author,
                 'created_at' => $created,
                 'updated_at' => $updated,
-                'audio_size' => $audio_size
+                'audio_size' => $audio_size2
             ],
             [
                 'name' => $name,
