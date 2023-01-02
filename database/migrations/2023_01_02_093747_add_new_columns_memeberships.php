@@ -13,11 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('user_downloads', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('user_id');
-            $table->foreignId('book_id');
-            $table->timestamps();
+        Schema::table('memberships', function (Blueprint $table) {
+            $table->text('description')->nullable();
+            $table->string('package_detail')->nullable();
+            $table->string('cycle_text')->nullable();
         });
     }
 
@@ -28,6 +27,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_downloads');
+        Schema::table('memberships', function (Blueprint $table) {
+            $table->dropColumn(['description', 'package_detail', 'cycle_text']);
+        });
     }
 };

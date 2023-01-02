@@ -36,6 +36,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('books/mark-view/{id}', 'BookController@markViewed');
     Route::post('books/mail', 'BookController@mailBook');
     Route::resource('books', 'BookController', ["as" => "api"]);
+    Route::post('books/download', 'BookController@download');
 
     Route::get('/user', 'UserController@index');
     Route::post('user/update', 'UserController@updateProfile');

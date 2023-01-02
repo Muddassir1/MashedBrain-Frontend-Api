@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Mail\BookMail;
 use App\Models\Book;
 use App\Models\Category;
+use App\Models\UserDownloads;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Mail\Mailables\Attachment;
@@ -49,8 +50,8 @@ class BookController extends Controller
     public function show($id)
     {
         $book = Book::findOrFail($id);
-       // dd($this->getFileDuration(public_path() . $book->audio_path));
-        
+        // dd($this->getFileDuration(public_path() . $book->audio_path));
+
         $pages = Book::get_book_pages($book);
         return response()->json(compact('book', 'pages'));
     }
@@ -112,32 +113,11 @@ class BookController extends Controller
         return response()->json(["message" => "Email sent successfully"]);
     }
 
-    public function getFileDuration($file)
+    public function download(Request $request)
     {
-        if (file_exists($file)) {
-            ## open and read video file
-            $handle = fopen($file, "r");
-
-            ## read video file size
-            $contents = fread($handle, filesize($file));
-            fclose($handle);
-            $make_hexa = hexdec(bin2hex(substr($contents, strlen($contents) - 3)));
-            if (strlen($contents) > $make_hexa) {
-                $pre_duration = hexdec(bin2hex(substr($contents, strlen($contents) - $make_hexa, 3)));
-                $post_duration = $pre_duration / 1000;
-                $timehours = $post_duration / 3600;
-                $timeminutes = ($post_duration % 3600) / 60;
-                $timeseconds = ($post_duration % 3600) % 60;
-                $timehours = explode(".", $timehours);
-                $timeminutes = explode(".", $timeminutes);
-                $timeseconds = explode(".", $timeseconds);
-                $duration = $timehours[0] . ":" . $timeminutes[0] . ":" . $timeseconds[0];
-            }
-            return $duration;
-        } else {
-            return false;
-        }
+        return UserDownloads::create([
+            "user_id" => $request->user()->id,
+            "book_id" => $request->book_id
+        ]);
     }
-
-   
 }

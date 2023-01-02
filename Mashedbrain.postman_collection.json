@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "ad24b32b-d031-42d0-9912-82d8eade839b",
+		"_postman_id": "094ea8ac-325b-4b5b-a867-ca0fbb7b8ecd",
 		"name": "Mashedbrain",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "11024730"
+		"_exporter_id": "8731459"
 	},
 	"item": [
 		{
@@ -305,6 +305,39 @@
 								"api",
 								"books",
 								"mail"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Download",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"book_id\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_url}}/books/download",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"books",
+								"download"
 							]
 						}
 					},
