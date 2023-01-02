@@ -3,7 +3,7 @@
         {{ str_contains(Request::url(), 'virtual-reality') == true ? ' mt-3 mx-3 bg-primary' : '' }}"
     id="" data-scroll="false">
     <div class="container-fluid py-1 px-3">
-        <h5 class="text-white me-sm-5 mb-0"><span class="color-gray">Welcome,</span> <span
+        <h5 class="text-white me-sm-5 my-3 my-lg-0"><span class="color-gray">Welcome,</span> <span
                 class="text-primary font-weight-bolder">{{ auth()->user()->name }}</span></h5>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4 justify-content-sm-end flex-column flex-sm-row" id="navbar">
             <div class="pe-md-3 d-flex align-items-center w-md-50 w-100 mb-3 mb-sm-0">

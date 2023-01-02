@@ -12,6 +12,9 @@ use Twilio\Rest\Client;
 
 class RegisterController extends Controller
 {
+    protected $sid;
+    protected $token;
+    protected $vsid;
 
     public function __construct()
     {

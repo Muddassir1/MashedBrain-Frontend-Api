@@ -14,17 +14,17 @@
     <div class="row mt-4 mx-4">
         <div class="col-12">
             <div class="card-header pb-3 row align-items-center">
-                <div class="col-3">
+                <div class="col-md-3 col-6">
                     <h6 class="page-title">Users<span class="data-count text-primary ms-2">(3,147)</span></h6>
                 </div>
-                <div class="col-3">
+                <div class="col-md-3 col-6">
                     <div class="daterange-container">
                         <i class="fal fa-calendar-alt text-lg"></i>
                         <input type="text" name="users_filter"style="height:45px"
                             class="daterange form-control w-80 text-xs" />
                     </div>
                 </div>
-                <div class="col-6 text-md-end">
+                <div class="col-md-6 col-12 text-md-end mt-2 mt-md-0">
                     <a href="#"
                         class="btn btn-primary btn-hover-outline font-weight-bold mb-0 border-primary border export-csv">
                         <i class="fal fa-plus me-3"></i>Export CSV
@@ -129,8 +129,8 @@
                 'YYYY-MM-DD'));
         });
 
-        var minDate = moment().startOf('year');
-        var maxDate = moment().endOf('year');
+        var minDate = '';
+        var maxDate = '';
 
         $.fn.dataTable.ext.search.push(
             function(settings, data, dataIndex) {

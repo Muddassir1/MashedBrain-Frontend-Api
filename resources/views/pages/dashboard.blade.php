@@ -429,8 +429,8 @@
             return graphData;
         }
 
-        var minDate = moment().startOf('year');
-        var maxDate = moment().endOf('year');
+        var minDate = '';
+        var maxDate = "";
 
         $.fn.dataTable.ext.search.push(
             function(settings, data, dataIndex) {

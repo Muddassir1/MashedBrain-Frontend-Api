@@ -19,6 +19,9 @@ class UserController extends Controller
 {
     use Notifiable;
 
+    protected $sid;
+    protected $token;
+    protected $vsid;
 
     public function __construct()
     {

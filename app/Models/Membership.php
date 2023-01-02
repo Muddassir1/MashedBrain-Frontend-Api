@@ -9,7 +9,7 @@ class Membership extends Model
 {
     use HasFactory;
 
-    protected $hidden = ['id'];
+    protected $hidden = [];
 
     public function users()
     {

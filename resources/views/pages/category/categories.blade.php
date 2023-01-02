@@ -8,10 +8,10 @@
 <div class="row mt-4 mx-4">
     <div class="col-12">
         <div class="card-header pb-0 row align-items-center mb-4">
-            <div class="col-6">
+            <div class="col-sm-6 col-12">
                 <h6 class="page-title">Categories<span class="data-count text-primary ms-2">(34)</span></h6>
             </div>
-            <div class="col-6 text-md-end">
+            <div class="col-sm-6 col-12 text-md-end mt-3 mt-sm-0">
                 <button class="btn btn-primary btn-hover-outline font-weight-normal mb-0 border-primary border" data-bs-toggle="modal" data-bs-target="#categoryModal">
                     <i class="fas fa-plus me-2"></i>Add New Category
                 </button>
