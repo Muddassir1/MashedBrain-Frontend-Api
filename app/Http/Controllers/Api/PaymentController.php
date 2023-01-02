@@ -15,6 +15,10 @@ use Illuminate\Support\Facades\Notification;
 class PaymentController extends Controller
 {
 
+    protected $validation_url;
+    protected $storeId;
+    protected $storePass;
+
     public function __construct()
     {
         $mode = getenv("PAYMENT_MODE");
@@ -46,6 +50,7 @@ class PaymentController extends Controller
     {
         Log::debug("Success route called");
         extract($request->all());
+
         if ($status == 'VALID' || $status == 'VALIDATED') {
             $response = Http::get($this->validation_url, [
                 'val_id' => $val_id,
@@ -55,7 +60,7 @@ class PaymentController extends Controller
             $data = json_decode($response->body());
             if ($data->status == 'VALID' || $data->status == 'VALIDATED') {
 
-                Transaction::create([
+                $transaction = Transaction::create([
                     'user_id'               => $data->value_b,
                     'transaction_id'        => $data->tran_id,
                     'bank_transaction_id'   => $data->bank_tran_id,
@@ -71,7 +76,7 @@ class PaymentController extends Controller
                     ["membership_id" => $data->value_a]
                 );
 
-                Notification::send(User::where('access_level', 3)->get(), new TransactionNotification($transaction));
+                Notification::send(User::where('access_level', 3)->get(), new TransactionNotification($transaction->id));
 
                 return response()->json([
                     'message' => 'Transaction successfully created'
