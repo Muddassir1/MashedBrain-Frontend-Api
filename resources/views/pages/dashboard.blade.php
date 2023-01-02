@@ -54,10 +54,14 @@
                                 <div class="numbers">
                                     <p class="heading-top">Total Install</p>
                                     <h3 class="font-weight-bolder color-dark-purple">
-                                        100K
+                                        {{ number_format($downloads) }}
                                     </h3>
                                     <p class="text-sm font-weight-medium font-roboto color-gray mt-5">
-                                        <span class="text-red">-13%</span> than last week
+                                        @if ($percent_downloads > 0)
+                                            <span class="text-primary">{{ (int) $percent_downloads }}%</span> than last week
+                                        @else
+                                            <span class="color-red">{{ (int) $percent_downloads }}%</span> than last week
+                                        @endif
                                     </p>
                                 </div>
                             </div>
@@ -66,7 +70,11 @@
                                     <i class="fas fa-ellipsis-v text-dark" aria-hidden="true"></i>
                                 </div>
                                 <div class="graph-image">
-                                    <img src="/img/icons/misc/graph-orange.png" />
+                                    @if ($percent_downloads > 0)
+                                        <img src="/img/icons/misc/graph-purple.png" />
+                                    @else
+                                        <img src="/img/icons/misc/graph-orange.png" />
+                                    @endif
                                 </div>
                             </div>
                         </div>

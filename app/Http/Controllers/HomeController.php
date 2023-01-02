@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Transaction;
 use App\Models\User;
+use App\Models\UserDownloads;
 use App\Models\UserMemberships;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -41,22 +42,20 @@ class HomeController extends Controller
         });
 
         $earnings = Transaction::sum('amount');
-
         $last_week_earnings = Transaction::whereBetween('created_at', [Carbon::now()->subWeek()->startOfWeek(), Carbon::now()->subWeek()->endOfWeek()])->sum('amount');
-
         $current_week_earnings = Transaction::whereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->sum('amount');
-
         $percent_earnings = ($current_week_earnings - $last_week_earnings) / ($current_week_earnings + $last_week_earnings) * 100;
 
-        //dd($last_week_earnings, $current_week_earnings, $earnings, $percent_earning);
 
         $subscriptions = UserMemberships::where('status', 1)->count();
-
-        $last_week_subscriptions = UserMemberships::where('status',1)->whereBetween('created_at', [Carbon::now()->subWeek()->startOfWeek(), Carbon::now()->subWeek()->endOfWeek()])->count();
-
-        $current_week_subscriptions = UserMemberships::where('status',1)->whereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->count();
-
+        $last_week_subscriptions = UserMemberships::where('status', 1)->whereBetween('created_at', [Carbon::now()->subWeek()->startOfWeek(), Carbon::now()->subWeek()->endOfWeek()])->count();
+        $current_week_subscriptions = UserMemberships::where('status', 1)->whereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->count();
         $percent_subscriptions = ($current_week_subscriptions - $last_week_subscriptions) / ($current_week_subscriptions + $last_week_subscriptions) * 100;
+
+        $downloads = UserDownloads::count();
+        $last_week_downloads = UserDownloads::whereBetween('created_at', [Carbon::now()->subWeek()->startOfWeek(), Carbon::now()->subWeek()->endOfWeek()])->count();
+        $current_week_downloads = UserDownloads::whereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->count();
+        $percent_downloads = ($current_week_downloads - $last_week_downloads) / ($current_week_downloads + $last_week_downloads) * 100;
 
         return view(
             'pages.dashboard',
@@ -70,7 +69,9 @@ class HomeController extends Controller
                 "earnings",
                 "percent_earnings",
                 "subscriptions",
-                "percent_subscriptions"
+                "percent_subscriptions",
+                "downloads",
+                "percent_downloads"
             )
         );
     }
