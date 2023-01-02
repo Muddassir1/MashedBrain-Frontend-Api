@@ -7,7 +7,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
-use wapmorgan\Mp3Info\Mp3Info;
+use App\Library\Mp3File;
 
 class BookSeeder extends Seeder
 {
@@ -23,10 +23,10 @@ class BookSeeder extends Seeder
         $author = "Jake Morill";
         $desc = $about_book = $about_audience = $about_author = "If you look past the decluttering books, the best books on minimalism help you understand the Why of a minimalist lifestyle. You can declutter your house, but unless you change your mindset about your possessions and your needs versus wants, you are just going to end up right back where you started.";
         $created = $updated = Carbon::now();
-        $audio = new Mp3Info(public_path() . '/audio/example_audio.mp3', true);
-        $audio_size = $audio->duration;
-        $audio = new Mp3Info(public_path() . '/audio/example_audio2.mp3', true);
-        $audio_size2 = $audio->duration;
+        $audio = new Mp3File(public_path() . '/audio/example_audio.mp3');
+        $audio_size = $audio->getDuration();
+        $audio = new Mp3File(public_path() . '/audio/example_audio2.mp3');
+        $audio_size2 = $audio->getDuration();
 
         DB::table('books')->insert([
             [

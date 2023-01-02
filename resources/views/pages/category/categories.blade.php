@@ -12,13 +12,13 @@
                 <h6 class="page-title">Categories<span class="data-count text-primary ms-2">(34)</span></h6>
             </div>
             <div class="col-sm-6 col-12 text-md-end mt-3 mt-sm-0">
-                <button class="btn btn-primary btn-hover-outline font-weight-normal mb-0 border-primary border" data-bs-toggle="modal" data-bs-target="#categoryModal">
+                <button class="btn btn-primary btn-hover-outline font-weight-normal mb-0 border-primary border w-100 w-sm-auto" data-bs-toggle="modal" data-bs-target="#categoryModal">
                     <i class="fas fa-plus me-2"></i>Add New Category
                 </button>
             </div>
         </div>
         <div class="card-body px-0 pt-0 pb-2">
-            <div class="table-responsive p-0">
+            <div class="p-0">
                 <table class="table table-books align-items-center mb-0">
                     <thead>
                         <tr>

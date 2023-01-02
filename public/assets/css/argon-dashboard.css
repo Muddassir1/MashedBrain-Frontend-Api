@@ -22641,6 +22641,10 @@ table th {
   font-weight: 400 !important;
 }
 
+.dataTables_paginate .ellipsis {
+  margin-right: 10px;
+}
+
 /* Books Page Styles */
 .table-books {
   border-collapse: separate;

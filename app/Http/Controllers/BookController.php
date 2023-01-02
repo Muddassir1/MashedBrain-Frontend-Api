@@ -9,7 +9,7 @@ use App\Models\Language;
 use App\Models\UserNotificationTokens;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
-use wapmorgan\Mp3Info\Mp3Info;
+use App\Library\Mp3File;
 
 class BookController extends Controller
 {
@@ -85,8 +85,9 @@ class BookController extends Controller
         if ($request->hasFile('book_audio') && $request->file('book_audio')->isValid()) {
             $audio_path = $request->file('book_audio')->store('uploads/audio', 'public');
             $book->audio_path = '/storage/' . $audio_path;
-            $audio = new Mp3Info(public_path() . $book->audio_path, true);
-            $book->audio_size = $audio->duration;
+            //sample usage:
+            $audio = new Mp3File(public_path() . $book->audio_path);
+            $book->audio_size = $audio->getDuration();
         }
         $book->save();
 
@@ -156,8 +157,8 @@ class BookController extends Controller
         if ($request->hasFile('book_audio') && $request->file('book_audio')->isValid()) {
             $audio_path = $request->file('book_audio')->store('uploads/audio', 'public');
             $book->audio_path = '/storage/' . $audio_path;
-            $audio = new Mp3Info(public_path() . $book->audio_path, true);
-            $book->audio_size = $audio->duration;
+            $audio = new Mp3File(public_path() . $book->audio_path);
+            $book->audio_size = $audio->getDuration();
         }
         $book->fill($request->input());
         $book->save();
