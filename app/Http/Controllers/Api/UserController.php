@@ -87,16 +87,22 @@ class UserController extends Controller
                         "code" => $code
                     ]
                 );
+            $user = User::where('phone', $phone)->firstOrFail();
+            Auth::loginUsingId($user->id);
         } catch (Throwable $th) {
             return response()->json(
                 [
-                    "message" => "Record not found",
+                    "message" => $th->getMessage(),
                     "status" => "failed"
                 ],
                 $th->getStatusCode()
             );
         }
-        return response()->json(["status" => $verification_check->status]);
+
+        return response()->json([
+            "status" => $verification_check->status,
+            "token" => $user->createToken($user->name)->plainTextToken
+        ]);
     }
 
     public function resetPasswordRequest(Request $request)
@@ -115,10 +121,8 @@ class UserController extends Controller
                 $twilio->verify->v2->services($this->vsid)
                     ->verifications
                     ->create($request->phone, "sms");
-                Auth::loginUsingId($user->id);
                 return response()->json([
                     "message" => "Code sent to the provided number",
-                    "token" => $user->createToken($user->name)->plainTextToken
                 ]);
             } catch (Throwable $th) {
                 return response()->json(["message" => $th->getMessage()], 500);

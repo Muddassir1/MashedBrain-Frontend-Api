@@ -587,7 +587,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"phone\" : \"+923356098656\",\r\n    \"code\" : \"7807\" // Check if status is \"approved\" in response\r\n}",
+							"raw": "{\r\n    \"phone\" : \"+923356098656\",\r\n    \"code\" : 4134\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
