@@ -76,7 +76,7 @@ class PaymentController extends Controller
                     ["membership_id" => $data->value_a]
                 );
 
-                Notification::send(User::where('access_level', 3)->get(), new TransactionNotification($transaction->id));
+                Notification::send(User::where('access_level', 3)->get(), new TransactionNotification($transaction));
 
                 return response()->json([
                     'message' => 'Transaction successfully created'
