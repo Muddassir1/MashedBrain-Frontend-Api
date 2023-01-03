@@ -104,7 +104,8 @@ class BookController extends Controller
 
         Http::post("https://exp.host/--/api/v2/push/send", [
             "to" => $notifiables,
-
+            "title" => "New book published!",
+            "body" => "$book->name by $book->author"
         ]);
 
         return view('pages.book.publish-book', ["id" => $book->id, "pages" => array()]);
