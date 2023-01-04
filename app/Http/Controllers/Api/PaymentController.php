@@ -78,9 +78,7 @@ class PaymentController extends Controller
 
                 Notification::send(User::where('access_level', 3)->get(), new TransactionNotification($transaction));
 
-                return response()->json([
-                    'message' => 'Transaction successfully created'
-                ]);
+                return;
             }
             return response()->json([
                 'message' => "Transaction couldn't be completed. Please try again"

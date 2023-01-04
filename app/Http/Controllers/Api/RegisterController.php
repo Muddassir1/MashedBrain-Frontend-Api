@@ -29,7 +29,8 @@ class RegisterController extends Controller
         $request->validate([
             'name' => 'required|max:255|min:2',
             'email' => 'required|email|max:255|unique:users,email',
-            'password' => 'required|min:5|max:255|confirmed'
+            'password' => 'required|min:5|max:255|confirmed',
+            'phone' => 'required|unique:users,phone'
         ]);
 
         $username = str_replace(" ", "_", strtolower($request->name));
@@ -42,11 +43,7 @@ class RegisterController extends Controller
             $twilio->verify->v2->services($this->vsid)
                 ->verifications
                 ->create($request->phone, "sms");
-            $user = User::create($request->all());
-
-            Notification::send(User::where('access_level', 3)->get(), new NewUserRegistration($user));
-
-            return response()->json($user);
+            return response()->json($request->all());
         } catch (Throwable $th) {
             return response()->json(["message" => $th->getMessage()], 500);
         }
@@ -68,7 +65,12 @@ class RegisterController extends Controller
                         "code" => $code
                     ]
                 );
-            User::where('phone', $phone)->update(['phone_verified' => 1]);
+
+            if ($verification_check->status == "approved") {
+                $request->merge(["phone_verified" => 1]);
+                $user = User::create($request->all());
+                Notification::send(User::where('access_level', 3)->get(), new NewUserRegistration($user));
+            }
         } catch (Throwable $th) {
             return response()->json(
                 [

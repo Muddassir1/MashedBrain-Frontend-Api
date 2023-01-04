@@ -891,7 +891,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"umer\",\r\n    \"email\": \"umer.ahh@gmail.com\",\r\n    \"password\": \"admin@123\",\r\n    \"password_confirmation\" : \"admin@123\",\r\n    \"phone\" : \"+923356098656\"\r\n}",
+							"raw": "{\r\n    \"name\": \"muddassir\",\r\n    \"email\": \"muddassir.ah@gmail.com\",\r\n    \"password\": \"admin@123\",\r\n    \"password_confirmation\" : \"admin@123\",\r\n    \"phone\" : \"+923356098656\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -928,7 +928,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"phone\" : \"+923356098656\",\r\n    \"code\" : \"3609\"\r\n}",
+							"raw": "{\r\n    \"name\": \"muddassir\",\r\n    \"username\": \"muddassir\",\r\n    \"email\": \"muddassir.ah@gmail.com\",\r\n    \"password\": \"admin@123\",\r\n    \"password_confirmation\" : \"admin@123\",\r\n    \"phone\" : \"+923330525433\",\r\n    \"code\" : 1979\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
