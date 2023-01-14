@@ -16,7 +16,7 @@ class UserProfileController extends Controller
 {
     public function index()
     {
-        $users = User::with('membership')->get();
+        $users = User::with('membership')->has('membership')->get();
         return view('pages.user.user-management', ["users" => $users]);
     }
 
