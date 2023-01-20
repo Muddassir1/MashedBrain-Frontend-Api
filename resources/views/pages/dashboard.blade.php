@@ -93,9 +93,11 @@
                                     </h3>
                                     <p class="text-sm font-weight-medium font-roboto color-gray mt-5">
                                         @if ($percent_subscriptions > 0)
-                                            <span class="text-primary">{{ (int) $percent_subscriptions }}%</span> than last week
+                                            <span class="text-primary">{{ (int) $percent_subscriptions }}%</span> than last
+                                            week
                                         @else
-                                            <span class="color-red">{{ (int) $percent_subscriptions }}%</span> than last week
+                                            <span class="color-red">{{ (int) $percent_subscriptions }}%</span> than last
+                                            week
                                         @endif
                                     </p>
                                 </div>
@@ -124,10 +126,10 @@
                                 <div class="numbers">
                                     <p class="heading-top">Download Per Book</p>
                                     <h3 class="font-weight-bolder color-dark-purple">
-                                        456
+                                        0
                                     </h3>
                                     <p class="text-sm font-weight-medium font-roboto color-gray mt-5">
-                                        <span class="text-red">-13%</span> than last week
+                                        <span class="color-red">0%</span> than last week
                                     </p>
                                 </div>
                             </div>
@@ -214,8 +216,8 @@
                                         <td class="px-0">
                                             <div class="d-flex py-1">
                                                 <div>
-                                                    <img src="{{ asset($user->avatar) }}" class="rounded-circle avatar me-3"
-                                                        alt="image">
+                                                    <img src="{{ asset($user->avatar) }}"
+                                                        class="rounded-circle avatar me-3" alt="image">
                                                 </div>
                                                 <div class="d-flex flex-column justify-content-center">
                                                     <p class="mb-0 text-sm"><a class="text-darker"
@@ -291,6 +293,20 @@
         var nerdData = getGraphUserData(nerds, 1, 12);
         var newbieData = getGraphUserData(newbies, 1, 12);
 
+        var maxNerds = Object.values(nerds).reduce((max, num) => {
+            if (num.length >= max)
+                return num.length;
+            return max;
+        }, 0);
+
+        var maxNew = Object.values(newbies).reduce((max, num) => {
+            if (num.length >= max)
+                return num.length;
+            return max;
+        }, 0);
+
+        var maxScale = Math.max(maxNerds,maxNew) + 5;
+
         // Graph month filter
         $('input.daterange').daterangepicker({
             opens: 'left',
@@ -358,7 +374,7 @@
                 scales: {
                     y: {
                         min: 0,
-                        max: 150,
+                        max: maxScale,
                         grid: {
                             drawBorder: false,
                             display: true,
@@ -375,10 +391,11 @@
                                 style: 'normal',
                                 lineHeight: 2
                             },
-                            callback: function(value, index, ticks) {
-                                return value + "K"
-                            },
-                            stepSize: 25
+                            /* 
+                                                        callback: function(value, index, ticks) {
+                                                            return value + "K"
+                                                        }, */
+                            stepSize: maxScale % 5
                         }
                     },
                     x: {

@@ -30,9 +30,9 @@ class HomeController extends Controller
     {
         $users = User::with('membership.details')->has('membership')->get();
         $recent_users = $users->sortByDesc('id')->take(30);
-        $newbie = $users->where('membership', '=', '1');
-        $nerds = $users->where('membership', '=', '2');
-
+        $newbie = $users->where('membership.details.id', '=', '1');
+        $nerds = $users->where('membership.details.id', '=', '2');
+                
         $grouped_nerds = $nerds->groupBy(function ($d) {
             return Carbon::parse($d->created_at)->format('n');
         });
