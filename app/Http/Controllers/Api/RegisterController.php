@@ -90,6 +90,7 @@ class RegisterController extends Controller
     public function createUser(Request $request)
     {
         try {
+            $request->merge(["avatar" => "/img/defaults/avatar/user.png"]);
             $user = User::create($request->all());
             Notification::send(User::where('access_level', 3)->get(), new NewUserRegistration($user));
             $data = $request->all();
