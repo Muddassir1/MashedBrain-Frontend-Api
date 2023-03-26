@@ -5,7 +5,8 @@
     <div class="container-fluid py-1 px-3">
         <h5 class="text-white me-sm-5 my-3 my-lg-0"><span class="color-gray">Welcome,</span> <span
                 class="text-primary font-weight-bolder">{{ auth()->user()->name }}</span></h5>
-        <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4 justify-content-sm-end flex-column flex-sm-row" id="navbar">
+        <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4 justify-content-sm-end flex-column flex-sm-row"
+            id="navbar">
             <div class="pe-md-3 d-flex align-items-center w-md-50 w-100 mb-3 mb-sm-0">
                 <div class="input-group search-bar-top">
                     <span
@@ -18,16 +19,22 @@
             <ul class="navbar-nav justify-content-sm-end">
                 <li class="nav-item dropdown pe-2 d-flex align-items-center" id="notificationDropdown">
                     <a href="javascript:;" class="nav-link text-white bell-nav p-3 rounded-circle"
-                        id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                        style="position: relative" id="dropdownMenuButton" data-bs-toggle="dropdown"
+                        aria-expanded="false">
                         <img src="{{ asset('/img/icons/misc/bell.png') }}" />
+                        @if (count($notifications) > 0)
+                            <div class="notif-available"
+                                style="height: 11px;width: 11px;position: absolute;background: #806bf6;top: 1px;right: 3px;border-radius: 13px;"">
+                            </div>
+                        @endif
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
                         @if (count($notifications) == 0)
-                        <li>
-                            <a class="dropdown-item border-radius-md" href="javascript:;">
-                                <p class="m-0">No unread notifications</p>
-                            </a>
-                        </li>
+                            <li>
+                                <a class="dropdown-item border-radius-md" href="javascript:;">
+                                    <p class="m-0">No unread notifications</p>
+                                </a>
+                            </li>
                         @endif
                         @foreach ($notifications as $notification)
                             <li class="mb-2">
@@ -48,7 +55,7 @@
                                             </p>
                                             <p class="text-xs text-secondary mb-0">
                                                 <i class="fa fa-clock me-1"></i>
-                                                {{$notification->created_at->diffForHumans()}}
+                                                {{ $notification->created_at->diffForHumans() }}
                                             </p>
                                         </div>
                                     </div>

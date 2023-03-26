@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Transaction;
 use App\Models\User;
+use App\Models\UserMemberships;
 use App\Notifications\NewUserRegistration;
+use App\Notifications\TransactionNotification;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Notification;
@@ -88,9 +91,29 @@ class RegisterController extends Controller
     {
         try {
             $user = User::create($request->all());
+            Notification::send(User::where('access_level', 3)->get(), new NewUserRegistration($user));
+            $data = $request->all();
+            $transaction = Transaction::create([
+                'user_id'               => $user->id,
+                'transaction_id'        => $data['tran_id'],
+                'bank_transaction_id'   => $data['bank_tran_id'],
+                'val_id'                => $data['val_id'],
+                'amount'                => $data['amount'],
+                'membership_id'         => $data['membership_id'],
+                'payment_method'        => $data['card_type'],
+                'status'                => 'VALID'
+            ]);
+
+            UserMemberships::updateOrCreate(
+                ['user_id' => $user->id],
+                ["membership_id" => $data['membership_id']]
+            );
+
+            Notification::send(User::where('access_level', 3)->get(), new TransactionNotification($transaction));
+            
             return response()->json($user);
         } catch (QueryException $e) {
-            return response()->json(["msg" => $e->getMessage()],400);
+            return response()->json(["msg" => $e->getMessage()], 400);
         }
     }
 }
