@@ -35,7 +35,7 @@ class BookMail extends Mailable
     public function envelope()
     {
         return new Envelope(
-            from: new Address('wizard@noorsofttech.com', 'MashedBrain'),
+            from: new Address(getenv('MAIL_FROM_ADDRESS'), getenv('MAIL_FROM_NAME')),
             subject: 'Book Request: ' . $this->data->name,
         );
     }
