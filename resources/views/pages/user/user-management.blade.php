@@ -15,7 +15,7 @@
         <div class="col-12">
             <div class="card-header pb-3 row align-items-center">
                 <div class="col-md-3 col-6">
-                    <h6 class="page-title">Users<span class="data-count text-primary ms-2">(3,147)</span></h6>
+                    <h6 class="page-title">Users<span class="data-count text-primary ms-2">( {{count($users)}} )</span></h6>
                 </div>
                 <div class="col-md-3 col-6">
                     <div class="daterange-container">

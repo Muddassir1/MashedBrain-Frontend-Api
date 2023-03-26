@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('book_id')->unsigned();
             $table->foreign('book_id')->references('id')->on('books');
-            $table->string('title',100);
+            $table->longtext('title');
             $table->longtext('description');
         });
     }

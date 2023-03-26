@@ -11,7 +11,7 @@
                     </h6>
                 </div>
                 <div class="col-6 text-md-end">
-                    <a href="{{ route('books.create') }}" class="btn btn-cancel font-weight-bold mb-0 me-3 w-25">
+                    <a href="{{ route('books') }}" class="btn btn-cancel font-weight-bold mb-0 me-3 w-25">
                         Cancel
                     </a>
                     <a href="#"
@@ -113,15 +113,15 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label class="form-control-label">What's it about</label>
-                                <textarea class="form-control pe-5" name="about_book" rows="10">If you look past the decluttering books, the best books on minimalism help you understand the Why of a minimalist lifestyle. You can declutter your house, but unless you change your mindset about your possessions and your needs versus wants, you are just going to end up right back where you started.</textarea>
+                                <textarea class="form-control pe-5" name="about_book" rows="10"></textarea>
                             </div>
                             <div class="form-group">
                                 <label class="form-control-label">Who is it for</label>
-                                <textarea class="form-control" name="about_audience" rows="10">If you look past the decluttering books, the best books on minimalism help you understand the Why of a minimalist lifestyle. You can declutter your house, but unless you change your mindset about your possessions and your needs versus wants, you are just going to end up right back where you started.</textarea>
+                                <textarea class="form-control" name="about_audience" rows="10"></textarea>
                             </div>
                             <div class="form-group">
                                 <label class="form-control-label">About the Author</label>
-                                <textarea class="form-control" name="about_author" rows="10">If you look past the decluttering books, the best books on minimalism help you understand the Why of a minimalist lifestyle. You can declutter your house, but unless you change your mindset about your possessions and your needs versus wants, you are just going to end up right back where you started.</textarea>
+                                <textarea class="form-control" name="about_author" rows="10"></textarea>
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary btn-sm ms-auto d-none">Save</button>

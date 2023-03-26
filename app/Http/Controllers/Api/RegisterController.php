@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Notifications\NewUserRegistration;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Notification;
 use Throwable;
@@ -81,5 +82,15 @@ class RegisterController extends Controller
             );
         }
         return response()->json(["status" => $verification_check->status]);
+    }
+
+    public function createUser(Request $request)
+    {
+        try {
+            $user = User::create($request->all());
+            return response()->json($user);
+        } catch (QueryException $e) {
+            return response()->json(["msg" => $e->getMessage()],400);
+        }
     }
 }

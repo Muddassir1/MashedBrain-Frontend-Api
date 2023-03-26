@@ -11,7 +11,7 @@
                     </h6>
                 </div>
                 <div class="col-6 text-md-end">
-                    <a href="" class="btn btn-cancel font-weight-bold mb-0 me-3 w-25">
+                    <a href="{{ route('books') }}" class="btn btn-cancel font-weight-bold mb-0 me-3 w-25">
                         Cancel
                     </a>
                     <a href="#"

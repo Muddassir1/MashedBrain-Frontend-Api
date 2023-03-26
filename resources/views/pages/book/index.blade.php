@@ -9,7 +9,7 @@
     <div class="col-12">
         <div class="card-header pb-0 row align-items-center mb-4">
             <div class="col-md-4 col-6">
-                <h6 class="page-title">Books<span class="data-count text-primary ms-2">(34)</span></h6>
+                <h6 class="page-title">Books<span class="data-count text-primary ms-2">( {{count($books)}} )</span></h6>
             </div>
             <div class="col-md-4 col-6">
                 <div class="filter-dropdown dropdown">

@@ -32,7 +32,7 @@ class UserProfileController extends Controller
             'name' => ['required', 'max:150', 'min:2', Rule::unique('users')],
             'email' => ['required', 'email', 'max:150',  Rule::unique('users')->ignore(auth()->user()->id)]
         ]);
-        
+
         $username = str_replace(" ", "_", strtolower($request->name));
         $request->merge(["username" => $username]);
 
@@ -102,15 +102,18 @@ class UserProfileController extends Controller
     {
         $user = User::findOrFail($id);
         if ($user->status) {
-            $user->status = 0;
+            $user->status = 0; // Unbanned
         } else {
-            $user->status = 1;
+            $user->status = 1; // Banned
+            // Revoke all tokens...
+            $user->tokens()->delete();
         }
         $user->save();
         return back();
     }
 
-    public function markNotificationAsRead(){
+    public function markNotificationAsRead()
+    {
         return Auth::user()->unreadNotifications->markAsRead();
     }
 }

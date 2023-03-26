@@ -77,18 +77,24 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        $book = Book::create($request->input());
+        $image_path = "";
+        $audio_path = "";
+        $audio_size = 0;
         if ($request->hasFile('book_image') && $request->file('book_image')->isValid()) {
             $image_path = $request->file('book_image')->store('uploads/images/books', 'public');
-            $book->image_path = '/storage/' . $image_path;
+            $image_path = '/storage/' . $image_path;
         }
         if ($request->hasFile('book_audio') && $request->file('book_audio')->isValid()) {
             $audio_path = $request->file('book_audio')->store('uploads/audio', 'public');
-            $book->audio_path = '/storage/' . $audio_path;
+            $audio_path = '/storage/' . $audio_path;
             //sample usage:
-            $audio = new Mp3File(public_path() . $book->audio_path);
-            $book->audio_size = $audio->getDuration();
+            $audio = new Mp3File(public_path() . $audio_path);
+            $audio_size = $audio->getDuration();
         }
+        $book = Book::create($request->input());
+        $book->image_path = $image_path;
+        $book->audio_path = $audio_path;
+        $book->audio_size = $audio_size;
         $book->save();
 
         // Send Push notification to users

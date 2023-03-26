@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Auth;
 Route::post('login', 'LoginController@login');
 Route::post('register', 'RegisterController@register');
 Route::post('phone-verify', 'RegisterController@verify');
+Route::post('create-user', 'RegisterController@createUser');
 
 Route::post('payment/ipn', 'PaymentController@ipn');
 Route::post('payment/success', 'PaymentController@success');
