@@ -45,4 +45,9 @@ class PageController extends Controller
     {
         return view("pages.sign-up-static");
     }
+
+    public function privacy()
+    {
+        return view("pages.privacy-policy");
+    }
 }
